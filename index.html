@@ -2544,9 +2544,8 @@ More properties are joining the collection soon, each one selected to offer the 
 
     if (propertyKey === 'property1') {
       // CHANGED: instead of showing the 3-lodge overview, jump straight to the
-      // Hidden Meadows details (same behavior as the single-property cards),
-      // but keep the High Meadows Lodging brand logo above it.
-      renderSubPropertyDetail(propertyData.subProperties['hidden-meadows'], false, true);
+      // Hidden Meadows details (same behavior as the single-property cards).
+      renderSubPropertyDetail(propertyData.subProperties['hidden-meadows'], false, false);
     } else if (propertyData[propertyKey]) {
       renderSubPropertyDetail(propertyData[propertyKey]);
     }
