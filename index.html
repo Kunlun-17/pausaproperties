@@ -1,0 +1,4023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pausa Properties - Hero</title>
+  <!-- Google Fonts for Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: hidden;
+    }
+
+    #hero-sec {
+      position: relative !important;
+      width: 100vw !important;
+      max-width: 100vw !important;
+      left: 50% !important;
+      right: 50% !important;
+      margin-left: -50vw !important;
+      margin-right: -50vw !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding: 0 !important;
+      top: 0 !important;
+      height: 100vh;
+      height: 100svh;
+      height: 100dvh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: #0b0c0e;
+      color: #ffffff !important;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+    }
+
+    #hero-sec *, 
+    #hero-sec *::before, 
+    #hero-sec *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    #hero-sec .slideshow-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    #hero-sec .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.8s ease-in-out, transform 6s ease-out;
+      transform: scale(1.03);
+    }
+
+    #hero-sec .slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #hero-sec .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      background: linear-gradient(
+        180deg, 
+        rgba(0, 0, 0, 0.45) 0%, 
+        rgba(0, 0, 0, 0.15) 35%, 
+        rgba(0, 0, 0, 0.8) 75%,
+        rgba(0, 0, 0, 0.95) 100%
+      );
+      pointer-events: none;
+    }
+
+    @keyframes subtleFloat {
+      0% {
+        transform: translate(-50%, 0px);
+      }
+      50% {
+        transform: translate(-50%, -8px);
+      }
+      100% {
+        transform: translate(-50%, 0px);
+      }
+    }
+
+    #hero-sec .glass-header {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1120px;
+      min-height: 60px;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 24px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 100px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+      animation: subtleFloat 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      will-change: transform;
+    }
+
+    #hero-sec .glass-header:hover {
+      animation-play-state: paused;
+    }
+
+    #hero-sec .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #ffffff !important;
+      text-decoration: none !important;
+      white-space: nowrap;
+    }
+
+    #hero-sec .brand-logo svg {
+      width: 20px;
+      height: 20px;
+      fill: #ffffff !important;
+      stroke: #ffffff !important;
+    }
+
+    #hero-sec .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      white-space: nowrap;
+    }
+
+    #hero-sec .nav-links a {
+      position: relative;
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: 4px 0;
+      transition: opacity 0.3s ease;
+      opacity: 0.9;
+    }
+
+    #hero-sec .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #c88a2b;
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: translateX(-50%) scaleX(0);
+      opacity: 0;
+    }
+
+    #hero-sec .nav-links a:hover {
+      opacity: 1;
+    }
+
+    #hero-sec .nav-links a:hover::after {
+      width: 100%;
+      transform: translateX(-50%) scaleX(1);
+      opacity: 1;
+    }
+
+    #hero-sec .header-cta {
+      background: #c88a2b !important;
+      color: #ffffff !important;
+      padding: 9px 20px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none !important;
+      white-space: nowrap;
+      transition: background 0.3s ease, transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    #hero-sec .header-cta:hover {
+      background: #b37a22 !important;
+      transform: translateY(-1px);
+    }
+
+    #hero-sec .hero-content {
+      position: relative;
+      z-index: 5;
+      margin-top: 0;
+      padding-bottom: 40px;
+      max-width: 840px;
+      width: 90%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #hero-sec .pill-tag {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      color: #ffffff !important;
+      margin-bottom: 16px;
+    }
+
+    #hero-sec .hero-title {
+      font-size: clamp(2rem, 4.2vw, 3.5rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      color: #c88a2b !important;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    #hero-sec .hero-subhead {
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      font-weight: 300;
+      font-style: italic !important;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.9) !important;
+      margin-bottom: 12px;
+      max-width: 680px;
+    }
+
+    #hero-sec .hero-description {
+      font-size: clamp(0.85rem, 1.1vw, 1rem);
+      font-weight: 300;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.75) !important;
+      margin-bottom: 28px;
+      max-width: 720px;
+    }
+
+    #hero-sec .hero-btn {
+      display: inline-block;
+      background: #c88a2b !important;
+      color: #ffffff !important;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 0.925rem;
+      font-weight: 500;
+      text-decoration: none !important;
+      letter-spacing: 0.01em;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #hero-sec .hero-btn:hover {
+      background: #d89632 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Responsive Breakdown */
+    @media (max-width: 860px) {
+      #hero-sec {
+        min-height: unset;
+      }
+      #hero-sec .nav-links {
+        display: none;
+      }
+      #hero-sec .glass-header {
+        width: 92%;
+        padding: 8px 18px;
+        top: calc(14px + env(safe-area-inset-top));
+      }
+
+      #hero-sec .hero-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.45) 0%,
+          rgba(0, 0, 0, 0.18) 30%,
+          rgba(0, 0, 0, 0.55) 58%,
+          rgba(0, 0, 0, 0.88) 80%,
+          rgba(0, 0, 0, 0.97) 100%
+        );
+      }
+
+      #hero-sec .hero-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 22px;
+        padding-bottom: calc(28px + env(safe-area-inset-bottom));
+        gap: 0;
+        opacity: 0;
+        transform: translateY(16px);
+        animation: heroContentIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+      }
+
+      #hero-sec .pill-tag {
+        font-size: 0.68rem;
+        padding: 5px 13px;
+        margin-bottom: 10px;
+        letter-spacing: 0.04em;
+      }
+
+      #hero-sec .hero-title {
+        font-size: clamp(1.5rem, 7.5vw, 2rem);
+        line-height: 1.12;
+        margin-bottom: 8px;
+        max-width: 22ch;
+      }
+
+      #hero-sec .hero-subhead {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin-bottom: 7px;
+        max-width: 34ch;
+      }
+
+      #hero-sec .hero-description {
+        font-size: 0.78rem;
+        line-height: 1.45;
+        margin-bottom: 16px;
+        max-width: 36ch;
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+
+      #hero-sec .hero-btn {
+        width: 100%;
+        max-width: 340px;
+        text-align: center;
+        padding: 14px 28px;
+        font-size: 0.85rem;
+        border-radius: 14px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      }
+
+      #hero-sec .slide-dots {
+        display: flex;
+      }
+    }
+
+    /* Extra-tight breakpoint for smaller phones */
+    @media (max-width: 380px) {
+      #hero-sec .hero-title {
+        font-size: 1.4rem;
+      }
+      #hero-sec .hero-subhead {
+        font-size: 0.8rem;
+      }
+      #hero-sec .hero-description {
+        font-size: 0.74rem;
+        margin-bottom: 14px;
+      }
+      #hero-sec .hero-content {
+        padding-bottom: calc(20px + env(safe-area-inset-bottom));
+      }
+    }
+
+    /* Landscape phones - shorter viewport height fallback */
+    @media (max-width: 860px) and (max-height: 480px) {
+      #hero-sec .hero-content {
+        padding-bottom: calc(14px + env(safe-area-inset-bottom));
+      }
+      #hero-sec .pill-tag {
+        margin-bottom: 6px;
+      }
+      #hero-sec .hero-title {
+        font-size: 1.35rem;
+        margin-bottom: 6px;
+      }
+      #hero-sec .hero-subhead {
+        margin-bottom: 5px;
+      }
+      #hero-sec .hero-description {
+        margin-bottom: 10px;
+      }
+      #hero-sec .hero-btn {
+        padding: 10px 24px;
+      }
+      #hero-sec .glass-header {
+        top: calc(8px + env(safe-area-inset-top));
+      }
+    }
+
+    @keyframes heroContentIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #hero-sec .slide-dots {
+      display: none;
+      z-index: 6;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    #hero-sec .slide-dots .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    #hero-sec .slide-dots .dot.active {
+      background: #ffffff;
+      width: 18px;
+      border-radius: 4px;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pausa Properties - Footer</title>
+
+  <style>
+    /* --- FORCE KAJABI PARENT WRAPPERS TO CLING TO THE EDGES --- */
+    .kjb-section,
+    .section,
+    .container,
+    .row,
+    .sizer,
+    [data-custom-html-block],
+    .custom-html,
+    .custom-code {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    /* Force page layout from top to bottom */
+    html, body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* --- EDGE-TO-EDGE EXPANDED FOOTER CONTAINER --- */
+    .custom-site-footer {
+      --brand-accent: #c88a2b;
+      --brand-accent-hover: #e2a850;
+      --dark-charcoal: #111111;
+      --text-muted: #666666;
+      --border-color: rgba(200, 138, 43, 0.15);
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: transparent !important;
+      color: var(--dark-charcoal);
+      
+      /* Force true 100vw edge-to-edge covering */
+      width: 100vw !important;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw !important;
+      margin-right: -50vw !important;
+      
+      padding: 80px max(4%, calc((100vw - 1200px) / 2 + 40px)) 40px max(4%, calc((100vw - 1200px) / 2 + 40px));
+      box-sizing: border-box;
+      border-top: 1px solid var(--border-color);
+      margin-top: auto !important; 
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.8fr 1fr; /* Two main distinct sections */
+      gap: 60px;
+      padding-bottom: 50px;
+    }
+
+    /* --- BRAND COLUMN --- */
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .footer-brand-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark-charcoal);
+      letter-spacing: -0.01em;
+      margin: 0 0 6px 0;
+    }
+
+    .footer-brand-tagline {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--brand-accent);
+      margin: 0 0 16px 0;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-brand-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0 0 24px 0;
+      max-width: 360px;
+    }
+
+    /* --- SOCIAL LINKS --- */
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-social-link {
+      color: var(--dark-charcoal);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(200, 138, 43, 0.08);
+      border: 1px solid rgba(200, 138, 43, 0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+      text-decoration: none;
+    }
+
+    .footer-social-link:hover {
+      background-color: var(--brand-accent);
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(200, 138, 43, 0.25);
+    }
+
+    /* --- NAVIGATION COLUMN --- */
+    .footer-links-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .footer-col-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark-charcoal);
+      margin: 0 0 20px 0;
+      padding: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links-list {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .footer-links-list li {
+      margin: 0 !important;
+      padding: 0 !important;
+      list-style-type: none !important;
+    }
+
+    .footer-link {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      display: inline-block;
+      position: relative;
+    }
+
+    .footer-link:hover {
+      color: var(--brand-accent);
+    }
+
+    .footer-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: var(--brand-accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .footer-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* --- FOOTER BOTTOM SUBBAR --- */
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-copyright {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-link {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .footer-bottom-link:hover {
+      color: var(--brand-accent);
+    }
+
+    /* --- RESPONSIVE MOBILE SCALING --- */
+    @media (max-width: 768px) {
+      .custom-site-footer {
+        padding: 60px 20px 30px 20px !important;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-bottom: 36px;
+      }
+
+      .footer-brand-desc {
+        max-width: 100%;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero-container" id="hero-sec">
+    
+    <script>
+      (function() {
+        document.body.style.setProperty('margin-top', '0', 'important');
+        document.body.style.setProperty('margin-bottom', '0', 'important');
+        document.body.style.setProperty('padding-top', '0', 'important');
+        document.body.style.setProperty('padding-bottom', '0', 'important');
+        
+        var el = document.getElementById('hero-sec');
+        if (el) {
+          var p = el.parentElement;
+          while (p) {
+            p.style.setProperty('padding-left', '0', 'important');
+            p.style.setProperty('padding-right', '0', 'important');
+            p.style.setProperty('padding-top', '0', 'important');
+            p.style.setProperty('padding-bottom', '0', 'important');
+            p.style.setProperty('margin-left', '0', 'important');
+            p.style.setProperty('margin-right', '0', 'important');
+            p.style.setProperty('margin-top', '0', 'important');
+            p.style.setProperty('margin-bottom', '0', 'important');
+            p.style.setProperty('max-width', 'none', 'important');
+            p.style.setProperty('width', '100%', 'important');
+            if (p.tagName === 'BODY') break;
+            p = p.parentElement;
+          }
+        }
+      })();
+    </script>
+
+    <header class="glass-header">
+      <a href="#" class="brand-logo">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        Pausa Properties
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#pausa-properties">Properties  </a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#stories">Retreats</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <a href="#pausa-properties" class="header-cta">Reserve a Spot</a>
+    </header>
+
+    <div class="slideshow-wrapper">
+      <div class="slide active" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/5444a94f-9e6f-47a1-965f-1c8d47e0dd6b.jpeg?im_w=1440');"></div>
+      <div class="slide" style="background-image: url('https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/314c6bc1-2df1-43be-b9e2-e4e4db03b057.jpeg?im_w=1440');"></div>
+      <div class="slide" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/c7c92509-e6e4-4a1a-a89f-79aa5a0750db.jpeg?im_w=1440');"></div>
+      <div class="slide" style="background-image: url('https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-1-3.webp');"></div>
+      <div class="slide" style="background-image: url('https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-1-2.webp');"></div>
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="pill-tag">• Step into Silence</div>
+      <h1 class="hero-title">Pausa Properties</h1>
+      <p class="hero-subhead">Come together. Slow down.</p>
+      <p class="hero-description">Farmhouses and cabins for the people who matter most to you — built for reunions, weddings, and the kind of gathering that actually lets everyone exhale.</p>
+      <div class="slide-dots" id="hero-slide-dots"></div>
+      <a href="#pausa-properties" class="hero-btn">Explore Our Properties</a>
+    </div>
+
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const heroSec = document.getElementById("hero-sec");
+      if (!heroSec) return;
+
+      const slides = heroSec.querySelectorAll(".slide");
+      let currentSlide = 0;
+      const slideInterval = 5000;
+
+      const dotsWrapper = heroSec.querySelector("#hero-slide-dots");
+      let dots = [];
+      if (dotsWrapper) {
+        slides.forEach(function(_, idx) {
+          const dot = document.createElement("div");
+          dot.className = "dot" + (idx === 0 ? " active" : "");
+          dotsWrapper.appendChild(dot);
+        });
+        dots = dotsWrapper.querySelectorAll(".dot");
+      }
+
+      function nextSlide() {
+        slides[currentSlide].classList.remove("active");
+        if (dots.length) dots[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("active");
+        if (dots.length) dots[currentSlide].classList.add("active");
+      }
+
+      setInterval(nextSlide, slideInterval);
+    });
+  </script>
+
+<!-- PAUSA - THE STORY BEHIND THE NAME -->
+<section id="pausa-story-section">
+  <div class="story-container">
+    <div class="story-logo-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#c88a2b" stroke-width="1.8" class="story-arc-icon"><path d="M4 15a8 8 0 0 1 16 0"/></svg>
+      <p class="story-wordmark">Pau&middot;sa</p>
+      <p class="story-phonetic">/ pau.za/ &bull; noun</p>
+      <div class="story-eq-bars">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="story-content">
+      <p class="story-eyebrow">The Story Behind the Name</p>
+      <h2 class="story-title">The Silence Is Doing Its <em>Own Kind of Work.</em></h2>
+
+      <div class="story-quote-box">
+        <p class="story-quote-text">Pausa is a musical term&mdash;the mark in a score that tells the musicians to hold still. Not because nothing's happening, but because the silence is doing its own kind of work. It's what makes the next phrase land.</p>
+      </div>
+
+      <p class="story-body-text">We named this collection of properties after that idea, because we think families and friend groups need the same thing music does: a real pause, held on purpose, in a place built for it. Not another item on the itinerary&mdash;a place where the whole point is to stop rushing, sit around the same table, and let the week actually be the week you remember.</p>
+
+      <div class="story-divider"></div>
+
+      <div class="story-tags-row">
+        <span class="story-tag"><span class="story-tag-icon">&#10022;</span>Purposeful Rest</span>
+        <span class="story-tag"><span class="story-tag-icon">&#10022;</span>Curated Spaces</span>
+        <span class="story-tag"><span class="story-tag-icon">&#10022;</span>Lasting Memories</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #pausa-story-section {
+    width: 100%;
+    padding: 70px 24px;
+    background: transparent !important;
+    display: flex;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    box-sizing: border-box;
+  }
+
+  #pausa-story-section *,
+  #pausa-story-section *::before,
+  #pausa-story-section *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #pausa-story-section .story-container {
+    max-width: 1080px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  #pausa-story-section .story-logo-card {
+    background: #1c1712;
+    border-radius: 24px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 20px;
+  }
+
+  #pausa-story-section .story-arc-icon {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 10px;
+  }
+
+  #pausa-story-section .story-wordmark {
+    color: #ffffff !important;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  #pausa-story-section .story-phonetic {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 0.78rem;
+    margin-top: 4px;
+    margin-bottom: 18px;
+  }
+
+  #pausa-story-section .story-eq-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 18px;
+  }
+
+  #pausa-story-section .story-eq-bars span {
+    width: 3px;
+    background: #c88a2b;
+    border-radius: 2px;
+    display: block;
+  }
+
+  #pausa-story-section .story-eq-bars span:nth-child(1) { height: 40%; }
+  #pausa-story-section .story-eq-bars span:nth-child(2) { height: 100%; }
+  #pausa-story-section .story-eq-bars span:nth-child(3) { height: 60%; }
+  #pausa-story-section .story-eq-bars span:nth-child(4) { height: 80%; }
+
+  #pausa-story-section .story-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5) !important;
+    margin-bottom: 12px;
+  }
+
+  #pausa-story-section .story-title {
+    font-size: clamp(1.7rem, 2.6vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: #111111 !important;
+    margin-bottom: 24px;
+  }
+
+  #pausa-story-section .story-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: #c88a2b !important;
+  }
+
+  #pausa-story-section .story-quote-box {
+    border-left: 3px solid #c88a2b;
+    background: rgba(200, 138, 43, 0.07);
+    border-radius: 0 14px 14px 0;
+    padding: 20px 28px;
+    margin-bottom: 24px;
+  }
+
+  #pausa-story-section .story-quote-text {
+    font-size: 0.95rem !important;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.7;
+    color: #1a1a1a !important;
+    max-width: 46ch;
+  }
+
+  #pausa-story-section .story-body-text {
+    font-size: 0.96rem;
+    line-height: 1.75;
+    color: #4a4a4a !important;
+    margin-bottom: 28px;
+    max-width: 58ch;
+  }
+
+  #pausa-story-section .story-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.09);
+    margin-bottom: 22px;
+  }
+
+  #pausa-story-section .story-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+
+  #pausa-story-section .story-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #222222 !important;
+  }
+
+  #pausa-story-section .story-tag-icon {
+    color: #c88a2b !important;
+    font-size: 0.85rem;
+  }
+
+  /* ================= MOBILE — app-style redesign ================= */
+  @media (max-width: 768px) {
+    #pausa-story-section {
+      padding: 48px 18px 56px;
+    }
+
+    #pausa-story-section .story-container {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    #pausa-story-section .story-logo-card {
+      aspect-ratio: unset;
+      height: 168px;
+      width: 100%;
+      border-radius: 20px 20px 0 0;
+      margin-bottom: 0;
+      position: relative;
+    }
+
+    #pausa-story-section .story-arc-icon {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 8px;
+    }
+
+    #pausa-story-section .story-wordmark {
+      font-size: 1.3rem;
+    }
+
+    #pausa-story-section .story-content {
+      background: #ffffff;
+      border-radius: 0 0 20px 20px;
+      padding: 28px 22px 26px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-top: none;
+    }
+
+    #pausa-story-section .story-eyebrow {
+      font-size: 0.7rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    #pausa-story-section .story-title {
+      font-size: 1.4rem;
+      line-height: 1.3;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #pausa-story-section .story-quote-box {
+      padding: 16px 18px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 20px;
+    }
+
+    #pausa-story-section .story-quote-text {
+      font-size: 0.88rem !important;
+      line-height: 1.6;
+      max-width: none;
+    }
+
+    #pausa-story-section .story-body-text {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      max-width: none;
+      margin-bottom: 22px;
+    }
+
+    #pausa-story-section .story-divider {
+      margin-bottom: 18px;
+    }
+
+    #pausa-story-section .story-tags-row {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 10px;
+      width: 100%;
+    }
+
+    #pausa-story-section .story-tag {
+      width: auto;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+      font-size: 0.68rem;
+      font-weight: 600;
+      justify-content: flex-start;
+      gap: 3px;
+    }
+
+    #pausa-story-section .story-tag-icon {
+      font-size: 0.65rem;
+    }
+  }
+</style>
+<!-- PAUSA PROPERTIES - FEATURED PROPERTIES SECTION -->
+<section id="pausa-properties">
+  <div class="properties-container scroll-animate">
+    
+    <!-- Section Header -->
+    <div class="properties-header">
+
+      <span class="section-label">WHAT WE'RE BUILDING</span>
+      <h2 class="section-title">A Place to Step Away — <em>and Move Forward</em></h2>
+      
+      <div class="header-intro-wrapper">
+        <p class="body-text">
+          A small, growing collection of properties across some of the most beautiful, quiet corners of the country — each one chosen for space, comfort, and the kind of setting that makes gathering easy.
+        </p>
+
+        <div class="highlight-box">
+          <p>Come for the space. Leave with clarity, connection, and something to show for it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Properties Grid -->
+    <div class="properties-grid">
+
+<!-- PROPERTY 1: High Meadows Lodging Hocking Hills -->
+<article class="property-card" onclick="openPropertyModal('property1')">
+  <div class="property-media single-hero-media">
+    <img src="https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-2-1024x683.webp" alt="High Meadows Lodging Hocking Hills Exterior" loading="lazy">
+    <div class="badge-overlay">Featured Retreat</div>
+    
+    <div class="card-hover-overlay">
+      <button type="button" class="btn-hover-view">View Property</button>
+    </div>
+  </div>
+
+        <div class="property-content">
+          <div class="property-meta">
+            <span class="meta-tag">📍 Hocking Hills, OH</span>
+            <span class="meta-dot">•</span>
+            <span class="meta-tag">Retreat Destination</span>
+          </div>
+          
+          <h3 class="property-title">High Meadows Lodging Hocking Hills</h3>
+          <p class="property-description">
+            A cozy, fully equipped cabin nestled in the forests and hollows of Hocking Hills — caves, waterfalls, and hiking trails just outside the door, with a private hot tub and deck for the evenings you'd rather stay in.
+
+More properties are joining the collection soon, each one selected to offer the same thing: real space, real quiet, and room for everyone you love.
+          </p>
+
+          <div class="property-footer">
+            <div class="property-specs">
+              <span><strong>3</strong> Lodges</span>
+              <span>•</span>
+              <span><strong>20+</strong> Acres</span>
+            </div>
+            <span class="btn-property">View Details →</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROPERTY 2: Vermont Farmhouse -->
+      <article class="property-card" onclick="openPropertyModal('property2')">
+        <div class="property-media single-hero-media">
+          <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/c7c92509-e6e4-4a1a-a89f-79aa5a0750db.jpeg?im_w=1440" alt="Vermont Farmhouse Exterior" loading="lazy">
+          <div class="badge-overlay">Featured Retreat</div>
+          
+          <div class="card-hover-overlay">
+            <button type="button" class="btn-hover-view">View Property</button>
+          </div>
+        </div>
+
+        <div class="property-content">
+          <div class="property-meta">
+            <span class="meta-tag">📍 Calais, Vermont, United States</span>
+          </div>
+
+          <h3 class="property-title">Vermont Farmhouse</h3>
+          <p class="property-description">
+            A beautifully restored 1860s farmhouse and classic Vermont barn on 36 acres, with room for up to 12 guests across 8 bedrooms. Gardens, walking paths, a brook running through the property, and a barn under renovation for weddings, dinners, and live music. Close to Woodbury Lake for canoeing and quiet afternoons on the water.
+          </p>
+
+          <div class="property-footer">
+            <div class="property-specs">
+              <span><strong>8</strong> Guests</span>
+              <span>•</span>
+              <span><strong>8</strong> Bedrooms</span>
+            </div>
+            <span class="btn-property">View Details →</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PAUSA MODERN MODAL SYSTEM -->
+<div id="pausa-modal-backdrop" class="modal-backdrop" onclick="closePropertyModal(event)">
+  <div class="modal-window" onclick="event.stopPropagation()">
+    <div class="modal-nav-header">
+      <div id="modal-breadcrumb" class="modal-breadcrumb"></div>
+      <button class="modal-close-btn" onclick="closePropertyModal(event)" aria-label="Close modal">&times;</button>
+    </div>
+
+    <div id="modal-body-content" class="modal-body-content"></div>
+
+    <div id="modal-booknow-bar" class="modal-booknow-bar"></div>
+  </div>
+</div>
+
+<!-- FULLSCREEN LIGHTBOX POPUP -->
+<div id="pausa-lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
+  <button class="lightbox-close-btn" onclick="closeLightbox(event)" aria-label="Close lightbox">&times;</button>
+  
+  <button id="lightbox-prev-btn" class="lightbox-nav-btn prev" onclick="navigateLightbox(-1, event)" aria-label="Previous image">&#10094;</button>
+  <button id="lightbox-next-btn" class="lightbox-nav-btn next" onclick="navigateLightbox(1, event)" aria-label="Next image">&#10095;</button>
+
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="Enlarged view">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+    <div id="lightbox-counter" class="lightbox-counter"></div>
+  </div>
+</div>
+
+<style>
+  #pausa-properties {
+    position: relative;
+    width: 100%;
+    padding: 60px 24px 100px;
+    background: transparent !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #111111;
+    box-sizing: border-box;
+  }
+
+  #pausa-properties *, 
+  #pausa-properties *::before, 
+  #pausa-properties *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #pausa-properties .properties-container {
+    max-width: 1160px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  #pausa-properties .properties-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #pausa-properties .pill-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    background: rgba(200, 138, 43, 0.12);
+    border: 1px solid rgba(200, 138, 43, 0.3);
+    border-radius: 100px;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: #c88a2b !important;
+    margin-bottom: 12px;
+  }
+
+  #pausa-properties .section-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 8px;
+  }
+
+  #pausa-properties .section-title {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #111111 !important;
+  }
+
+  #pausa-properties .section-title em {
+    font-style: italic;
+    color: #c88a2b !important;
+    font-weight: 400;
+  }
+
+  #pausa-properties .header-intro-wrapper {
+    max-width: 760px;
+    margin-top: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #pausa-properties .lead-text {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    font-weight: 500;
+    line-height: 1.5;
+    color: #1a1a1a !important;
+    margin-bottom: 16px;
+  }
+
+  #pausa-properties .body-text {
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: #333333 !important;
+    margin-bottom: 20px;
+  }
+
+  #pausa-properties .highlight-box {
+    width: 100%;
+    padding: 18px 24px;
+    background: rgba(200, 138, 43, 0.08);
+    border-left: 3px solid #c88a2b;
+    border-radius: 0 16px 16px 0;
+    text-align: left;
+  }
+
+  #pausa-properties .highlight-box p {
+    font-size: clamp(0.925rem, 1.1vw, 1.025rem);
+    font-weight: 600;
+    font-style: italic;
+    color: #111111 !important;
+    letter-spacing: 0.01em;
+  }
+
+  #pausa-properties .properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
+    width: 100%;
+  }
+
+  #pausa-properties .property-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  #pausa-properties .property-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  #pausa-properties .property-media {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    background: #f4f4f4;
+    overflow: hidden;
+  }
+
+  #pausa-properties .multi-image-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    background: #ffffff;
+  }
+
+  #pausa-properties .multi-image-grid .main-slice {
+    grid-row: span 2;
+  }
+
+  #pausa-properties .media-slice {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #pausa-properties .media-slice img,
+  #pausa-properties .single-hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #pausa-properties .property-card:hover img {
+    transform: scale(1.05);
+  }
+
+  #pausa-properties .badge-overlay {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    background: rgba(17, 17, 17, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 8px;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+
+  #pausa-properties .card-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 3;
+  }
+
+  #pausa-properties .btn-hover-view {
+    padding: 12px 24px;
+    background: #ffffff;
+    color: #111111;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 100px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transform: translateY(20px);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+  }
+
+  #pausa-properties .property-card:hover .card-hover-overlay {
+    opacity: 1;
+  }
+
+  #pausa-properties .property-card:hover .btn-hover-view {
+    transform: translateY(0);
+  }
+
+  #pausa-properties .property-card:hover .badge-overlay {
+    opacity: 0;
+  }
+
+  #pausa-properties .property-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  #pausa-properties .property-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.55);
+    margin-bottom: 8px;
+  }
+
+  #pausa-properties .meta-tag {
+    font-weight: 500;
+  }
+
+  #pausa-properties .meta-dot {
+    font-size: 0.6rem;
+    color: #c88a2b;
+  }
+
+  #pausa-properties .property-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  #pausa-properties .property-description {
+    font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.55;
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+
+  #pausa-properties .property-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  #pausa-properties .property-specs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: #666666;
+  }
+
+  #pausa-properties .property-specs strong {
+    color: #111111;
+  }
+
+  #pausa-properties .btn-property {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #c88a2b;
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    padding: 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .modal-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-window {
+    background: #ffffff;
+    width: 92vw;
+    max-width: 1100px;
+    max-height: 88vh;
+    border-radius: 24px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.96) translateY(15px);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .modal-backdrop.is-open .modal-window {
+    transform: scale(1) translateY(0);
+  }
+
+  .modal-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px 12px;
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    flex-shrink: 0;
+  }
+
+  .modal-breadcrumb button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f4f4f6;
+    border: 1px solid #e2e2e7;
+    padding: 9px 18px;
+    border-radius: 100px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #222;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .modal-breadcrumb button:hover {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+  }
+
+  .modal-close-btn {
+    background: #f4f4f6;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.2s ease;
+  }
+
+  .modal-close-btn:hover {
+    background: #111111;
+    color: #ffffff;
+  }
+
+  .modal-body-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 32px 48px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .modal-body-content > * {
+    flex-shrink: 0;
+  }
+
+  .modal-hero-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .modal-brand-logo {
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .modal-intro-text {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .modal-intro-text p {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: #444444;
+    margin-bottom: 16px;
+  }
+
+  .modal-intro-quote-box {
+    width: 100%;
+    max-width: 900px;
+    margin: 8px auto 0;
+    padding: 18px 24px;
+    background: rgba(200, 138, 43, 0.08);
+    border-left: 3px solid #c88a2b;
+    border-radius: 0 16px 16px 0;
+    text-align: left;
+  }
+
+  .modal-intro-quote {
+    font-size: clamp(0.925rem, 1.1vw, 1.025rem) !important;
+    font-weight: 600;
+    font-style: italic;
+    color: #111111 !important;
+    letter-spacing: 0.01em;
+    text-align: left;
+    margin: 0 !important;
+  }
+
+  .modal-sub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  .sub-property-card {
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .sub-property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.09);
+  }
+
+  .sub-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .sub-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .sub-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 4px;
+  }
+
+  .sub-card-badge {
+    font-size: 0.8rem;
+    color: #c88a2b;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .sub-card-desc {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.55;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .sub-card-btn {
+    align-self: flex-start;
+    padding: 9px 20px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 100px;
+    border: none;
+    transition: background 0.2s ease;
+  }
+
+  .sub-property-card:hover .sub-card-btn {
+    background: #c88a2b;
+  }
+
+  #pausa-modal-backdrop .modern-gallery-container {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0 !important;
+  }
+
+  #pausa-modal-backdrop .modern-gallery-grid {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr !important;
+    grid-template-rows: 420px !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  #pausa-modal-backdrop .gallery-main-item {
+    position: relative;
+    display: block !important;
+    width: 100% !important;
+    height: 420px !important;
+    min-height: 420px !important;
+    max-height: 420px !important;
+    flex-shrink: 0 !important;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 16px 0 0 16px;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: #e9e9e9;
+    transition: transform 0.4s ease;
+  }
+
+  #pausa-modal-backdrop .gallery-main-item:hover {
+    transform: scale(1.015);
+  }
+
+  #pausa-modal-backdrop .gallery-sub-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(2, 205px) !important;
+    gap: 10px !important;
+    width: 100% !important;
+    height: 420px !important;
+  }
+
+  #pausa-modal-backdrop .gallery-item {
+    position: relative;
+    display: block !important;
+    width: 100% !important;
+    height: 205px !important;
+    min-height: 205px !important;
+    max-height: 205px !important;
+    flex-shrink: 0 !important;
+    overflow: hidden;
+    cursor: pointer;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: #e9e9e9;
+    transition: transform 0.4s ease;
+  }
+
+  #pausa-modal-backdrop .gallery-item:hover {
+    transform: scale(1.05);
+  }
+
+  @keyframes floatSubtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  #pausa-modal-backdrop .gallery-view-all-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: #d89a3d;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 16px rgba(216, 154, 61, 0.35);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 5;
+    animation: floatSubtle 2.6s ease-in-out infinite;
+    transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  }
+
+  #pausa-modal-backdrop .gallery-view-all-btn:hover {
+    animation: none;
+    background: #bb7f2e;
+    color: #ffffff;
+    transform: scale(1.08);
+    box-shadow: 0 10px 26px rgba(187, 127, 46, 0.45);
+  }
+
+  .detail-header-title {
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .detail-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #c88a2b;
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+
+  .detail-body-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444444;
+  }
+
+  .features-section-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #111111;
+    margin-top: 36px;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .video-embed-wrapper {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 4px;
+    background: #000000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px 32px;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+
+  .feature-icon-wrapper {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: transparent;
+    margin-top: 2px;
+  }
+
+  .feature-icon {
+    width: 22px;
+    height: 22px;
+    stroke: #222222;
+    stroke-width: 1.6;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .feature-text {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #222222;
+    line-height: 1.4;
+    white-space: normal;
+    word-break: normal;
+    overflow: visible;
+  }
+
+  .amenities-section-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #111111;
+    margin-top: 36px;
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .amenities-accordion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .amenity-group {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  }
+
+  .amenity-group:last-child {
+    border-bottom: none;
+  }
+
+  .amenity-group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 22px;
+    cursor: pointer;
+    background: #ffffff;
+    transition: background 0.2s ease;
+    user-select: none;
+  }
+
+  .amenity-group-header:hover {
+    background: rgba(200, 138, 43, 0.05);
+  }
+
+  .amenity-group-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111111;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .amenity-group-count {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #999999;
+  }
+
+  .amenity-chevron {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    stroke: #c88a2b;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .amenity-group.is-open .amenity-chevron {
+    transform: rotate(180deg);
+  }
+
+  .amenity-group-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 22px 0px;
+    transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .amenity-group.is-open .amenity-group-body {
+    padding: 0 22px 20px;
+  }
+
+  .amenity-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px 28px;
+  }
+
+  .amenity-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.92rem;
+    color: #333333;
+    line-height: 1.45;
+  }
+
+  .amenity-list-item svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 3px;
+    stroke: #c88a2b;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .amenity-item-note {
+    display: block;
+    font-size: 0.8rem;
+    color: #8a8a8a;
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  .amenity-list-item.excluded {
+    color: #9a9a9a;
+    text-decoration: line-through;
+    text-decoration-color: rgba(0,0,0,0.25);
+  }
+
+  .amenity-list-item.excluded svg {
+    stroke: #b8b8b8;
+  }
+
+  .lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .lightbox-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox-content {
+    position: relative;
+    max-width: 85vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lightbox-content img {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 80vh !important;
+    object-fit: contain !important;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .lightbox-caption {
+    margin-top: 18px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-align: center;
+  }
+
+  .lightbox-counter {
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .lightbox-close-btn {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    z-index: 100000;
+  }
+
+  .lightbox-close-btn:hover {
+    transform: rotate(360deg);
+    background-color: #ff3b30;
+    border-color: #ff3b30;
+    color: #ffffff;
+  }
+
+  .lightbox-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    z-index: 100000;
+  }
+
+  .lightbox-nav-btn.prev {
+    left: 32px;
+  }
+
+  .lightbox-nav-btn.next {
+    right: 32px;
+  }
+
+  .lightbox-nav-btn:hover:not(.disabled) {
+    background: #ffffff;
+    color: #111111;
+  }
+
+  .lightbox-nav-btn.disabled {
+    opacity: 0.2;
+    cursor: default;
+    pointer-events: none;
+    border-color: transparent;
+  }
+
+  .modal-booknow-bar {
+    display: none;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    background: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .modal-booknow-bar.is-visible {
+    display: flex;
+  }
+
+  .modal-booknow-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 44px;
+    background: #d89a3d;
+    color: #ffffff !important;
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border: none;
+    border-radius: 100px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(216, 154, 61, 0.35);
+    animation: floatSubtle 2.6s ease-in-out infinite;
+    transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  }
+
+  .modal-booknow-btn:hover {
+    animation: none;
+    background: #bb7f2e;
+    transform: scale(1.06);
+    box-shadow: 0 14px 30px rgba(187, 127, 46, 0.45);
+  }
+
+  #pausa-properties .properties-container.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #pausa-properties .properties-container.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1024px) {
+    .modal-sub-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    #pausa-properties {
+      padding: 32px 16px 56px;
+    }
+    
+    #pausa-properties .properties-grid {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    #pausa-properties .property-card {
+      border-radius: 18px;
+    }
+
+    #pausa-properties .property-media {
+      height: 230px;
+    }
+
+    #pausa-properties .property-content {
+      padding: 18px 20px 20px;
+    }
+
+    .modal-backdrop {
+      padding: 0;
+    }
+
+    .modal-window {
+      width: 100vw;
+      height: 100dvh;
+      max-height: 100dvh;
+      border-radius: 0;
+    }
+
+    .modal-nav-header {
+      padding: max(14px, env(safe-area-inset-top)) 18px 10px;
+    }
+
+    .modal-body-content {
+      padding: 14px 18px 28px;
+      gap: 24px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-brand-logo {
+      max-width: 150px;
+    }
+
+    .detail-header-title {
+      font-size: 1.55rem;
+    }
+
+    .detail-subtitle {
+      font-size: 1.08rem;
+    }
+
+    .modal-sub-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    #pausa-modal-backdrop .modern-gallery-grid {
+      display: flex !important;
+      grid-template-columns: unset !important;
+      grid-template-rows: unset !important;
+      gap: 0 !important;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    #pausa-modal-backdrop .modern-gallery-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    #pausa-modal-backdrop .gallery-main-item {
+      flex: 0 0 100% !important;
+      width: 100% !important;
+      height: 280px !important;
+      min-height: 280px !important;
+      max-height: 280px !important;
+      scroll-snap-align: start;
+      border-radius: 16px;
+    }
+
+    #pausa-modal-backdrop .gallery-sub-grid {
+      flex: 0 0 100% !important;
+      width: 100% !important;
+      height: 280px !important;
+      grid-template-rows: repeat(2, 138px) !important;
+      gap: 4px !important;
+      scroll-snap-align: start;
+    }
+
+    #pausa-modal-backdrop .gallery-item {
+      height: 138px !important;
+      min-height: 138px !important;
+      max-height: 138px !important;
+    }
+
+    #pausa-modal-backdrop .gallery-view-all-btn {
+      bottom: 12px;
+      right: 12px;
+      padding: 9px 16px;
+      font-size: 0.78rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .amenity-list {
+      grid-template-columns: 1fr;
+    }
+
+    .modal-booknow-bar {
+      padding: 12px 18px max(12px, env(safe-area-inset-bottom));
+    }
+
+    .modal-booknow-btn {
+      width: 100%;
+      padding: 15px 20px;
+    }
+
+    .lightbox-nav-btn.prev {
+      left: 12px;
+    }
+
+    .lightbox-nav-btn.next {
+      right: 12px;
+    }
+
+    .lightbox-close-btn {
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      font-size: 1.4rem;
+    }
+  }
+</style>
+
+<!-- Dynamic Script for Scroll Observer, Modal & Lightbox Gallery -->
+<script>
+  const featureIcons = {
+    bed: `<svg class="feature-icon" viewBox="0 0 24 24"><path d="M2 4v16M2 8h20v12M2 17h20M6 8v3M10 8v3"/></svg>`,
+    users: `<svg class="feature-icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    bath: `<svg class="feature-icon" viewBox="0 0 24 24"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.12 0 1.5 1.5 0 0 0 0 2.12L7 8"/><path d="M2 12h20v4a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5v-4z"/><path d="M4 12V7a2 2 0 0 1 2-2h3"/></svg>`,
+    hiking: `<svg class="feature-icon" viewBox="0 0 24 24"><circle cx="13" cy="4" r="2"/><path d="m7 21 3-5 2 2 4-6 3 3"/><path d="M14 12l-2-2-4 3 2 4"/><path d="M18 13l-3-3"/></svg>`,
+    fire: `<svg class="feature-icon" viewBox="0 0 24 24"><path d="M12 2c1.13 4.47-2.67 7.23-2 10 0-3.1 3-5.07 3-5.07 1 2.22 4 3.7 4 7.07 0 3.87-3.13 7-7 7s-7-3.13-7-7c0-4.8 5-8.5 9-12z"/></svg>`,
+    tub: `<svg class="feature-icon" viewBox="0 0 24 24"><path d="M4 12h16a2 2 0 0 1 2 2v4a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-4a2 2 0 0 1 2-2z"/><path d="M6 12V5a2 2 0 0 1 2-2h3v9"/><path d="M6 21v1M18 21v1"/></svg>`,
+    dog: `<svg class="feature-icon" viewBox="0 0 24 24"><path d="M10 5.172a2 2 0 0 0-2 0l-3 1.5A2 2 0 0 0 4 8.448V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.448a2 2 0 0 0-1-1.776l-3-1.5a2 2 0 0 0-2 0l-2 1z"/><circle cx="12" cy="13" r="3"/></svg>`,
+    chairs: `<svg class="feature-icon" viewBox="0 0 24 24"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/><path d="M5 18v3M19 18v3"/></svg>`,
+    acres: `<svg class="feature-icon" viewBox="0 0 24 24"><path d="m12 3-9 6h18l-9-6z"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/></svg>`,
+    compass: `<svg class="feature-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>`,
+    dining: `<svg class="feature-icon" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>`,
+    beds: `<svg class="feature-icon" viewBox="0 0 24 24"><rect x="2" y="10" width="20" height="9" rx="2"/><path d="M2 15h20"/><circle cx="6.5" cy="13" r="1.1"/><circle cx="10.5" cy="13" r="1.1"/><path d="M4 10V7a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v3"/></svg>`
+  };
+
+  const amenityCheckIcon = `<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+  const amenityExcludedIcon = `<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+  const amenityChevronIcon = `<svg class="amenity-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
+
+  function imgUrl(item) {
+    return (item && typeof item === 'object') ? item.url : item;
+  }
+  function imgCaption(item) {
+    return (item && typeof item === 'object' && item.caption) ? item.caption : '';
+  }
+
+  function ensureVimeoPlayerScript() {
+    if (!document.querySelector('script[data-pausa-vimeo]')) {
+      const s = document.createElement('script');
+      s.src = 'https://player.vimeo.com/api/player.js';
+      s.setAttribute('data-pausa-vimeo', 'true');
+      document.head.appendChild(s);
+    }
+  }
+
+  function renderAmenityItem(item) {
+    const isObj = item && typeof item === 'object';
+    const text = isObj ? item.text : item;
+    const note = isObj ? item.note : null;
+    const excluded = isObj && item.excluded;
+    return `
+      <div class="amenity-list-item${excluded ? ' excluded' : ''}">
+        ${excluded ? amenityExcludedIcon : amenityCheckIcon}
+        <span>${text}${note ? `<span class="amenity-item-note">${note}</span>` : ''}</span>
+      </div>
+    `;
+  }
+
+  function renderAmenitiesSection(amenityGroups, uidPrefix) {
+    if (!amenityGroups || !amenityGroups.length) return '';
+    return `
+      <h4 class="amenities-section-title">Amenities</h4>
+      <div class="amenities-accordion">
+        ${amenityGroups.map((group, idx) => {
+          const groupId = `${uidPrefix}-amenity-${idx}`;
+          return `
+            <div class="amenity-group" id="${groupId}">
+              <div class="amenity-group-header" onclick="toggleAmenityGroup('${groupId}')">
+                <span class="amenity-group-title">${group.category}</span>
+                ${amenityChevronIcon}
+              </div>
+              <div class="amenity-group-body">
+                <div class="amenity-list">
+                  ${group.items.map(item => renderAmenityItem(item)).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  }
+
+  function toggleAmenityGroup(groupId) {
+    const group = document.getElementById(groupId);
+    if (!group) return;
+    const body = group.querySelector('.amenity-group-body');
+    const isOpen = group.classList.contains('is-open');
+    if (isOpen) {
+      body.style.maxHeight = '0px';
+      group.classList.remove('is-open');
+    } else {
+      group.classList.add('is-open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+
+  // Data Store
+  const propertyData = {
+    property1: {
+      type: "overview",
+      logo: "https://highmeadowslodging.com/wp-content/uploads/2022/11/CX-86883_High-Meadows-Lodging_FINAL.png",
+      title: "Explore, Recharge & Find Inspiration",
+      intro: [
+        "A retreat isn't only about the time you spend inside the property. Hocking Hills offers a beautiful setting to step outside, breathe, explore, and let your surroundings become part of the experience.",
+        "From scenic hiking trails and breathtaking waterfalls to canoeing, local wineries, and other nearby experiences, there are plenty of ways to balance focused work with rest, play, and discovery.",
+        "Take a break from your work session to explore Old Man's Cave, Ash Cave, Cedar Falls, Rock House, and the surrounding landscape. Whether you're looking for a quiet moment in nature, an activity to share with your retreat group, or simply a change of scenery, there's room here to make the retreat your own."
+      ],
+      quote: "Step away. Explore something new. Come back refreshed and ready for what's next.",
+      subLodges: [
+        {
+          id: "high-meadows-lodge",
+          name: "High Meadows Lodge",
+          badge: "Sleeps 12 | Child & Pet Friendly",
+          desc: "Set across 20+ acres of beautiful countryside, High Meadows Lodge offers the space and privacy to step away from everyday distractions and focus on what matters. This custom-built 3,400 sq. ft. log cabin comfortably sleeps up to 12 guests...",
+          image: "https://highmeadowslodging.com/wp-content/uploads/2025/11/DJI_0549-1-scaled-1.webp"
+        },
+        {
+          id: "chieftain-meadows",
+          name: "Chieftain Meadows",
+          badge: "Sleeps 12 | Child & Pet Friendly",
+          desc: "With 20+ acres to explore, Chieftain Meadows provides plenty of room to slow down, reconnect, and create space for focused retreat work. The five-bedroom, 3.5-bathroom property sleeps up to 12 guests...",
+          image: "https://highmeadowslodging.com/wp-content/uploads/2025/09/DJI_0527-1-scaled.jpg"
+        },
+        {
+          id: "hidden-meadows",
+          name: "Hidden Meadows",
+          badge: "Sleeps 12 | Child Friendly",
+          desc: "Hidden Meadows offers a peaceful, private setting designed for stepping away from the noise of everyday life and making room for meaningful work and restoration. This five-bedroom, 3.5-bathroom property sleeps up to 12 guests...",
+          image: "https://highmeadowslodging.com/wp-content/uploads/2025/11/DJI_0509-scaled-1.webp"
+        }
+      ]
+    },
+    subProperties: {
+      "chieftain-meadows": {
+        title: "Chieftain Meadows",
+        welcomeTitle: "Welcome to Chieftain Meadows",
+        images: [
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-15.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-1-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-2-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-3-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-4-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-5-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-6-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-7-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-8-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-9-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-10-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-11-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-12-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-13-1.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-14-2.webp"
+        ],
+        description: "Welcome to Chieftain Meadows, a spacious and private retreat setting near Hocking Hills. With 20+ acres to explore, this 3,000-square-foot cabin offers room to step away from the everyday and make space for focused work, meaningful conversation, and time to recharge together.\n\nSettle into the covered wrap-around deck, gather around the picnic tables, or unwind in the lower-level game room. With five bedrooms and space for up to 12 guests, Chieftain Meadows makes it easy to balance purposeful retreat time with moments of rest and connection.",
+        subTitle: "Make Space to Retreat",
+        subDescription: "Whether you're gathering to work toward a shared goal, reconnect with your creativity, or simply create room to breathe, Chieftain Meadows offers a peaceful setting for your retreat to unfold.",
+        video: `<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/770914106?h=887516d5b0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Chieftain Meadows Hocking Hills Cabin.mp4"></iframe></div>`,
+        bookNowUrl: "https://app.ownerrez.com/widgets/5379185c23d74098a68a57ccd5bc2cd1?view=form",
+        features: [
+          { icon: 'bed', text: "5 Bedrooms" },
+          { icon: 'users', text: "Accommodates max 12 Guests" },
+          { icon: 'bath', text: "3 Full Baths and 1 Half Bath" },
+          { icon: 'hiking', text: "Hiking on property" },
+          { icon: 'fire', text: "Fire pit" },
+          { icon: 'tub', text: "Hot Tub" }
+        ],
+        amenities: [
+          { category: "Essentials", items: [ "Wireless Internet", "Linens provided", "Towels provided", "Hair dryer", "Air conditioning", "Fireplace", { text: "Firewood available", note: "Bring your own or buy bundles for $7 each — pay by cash or Venmo for what you use." } ] },
+          { category: "Kitchen", items: [ "Microwave", "Refrigerator with icemaker", "Dishes & utensils", "Pots & pans", "Keurig and traditional coffee maker", "Dishwasher", "Stove", "Toaster", "Oven", { text: "Gas grill", note: "Propane provided" }, "Dining table" ] },
+          { category: "Hot Tub", items: [ "Covered hot tub", { text: "Bath towels provided", note: "You may want to bring pool-type towels for the hot tub" } ] },
+          { category: "Entertainment", items: [ "Games/puzzles", "Game room", "Foosball, poker table, shuffleboard table", "Smart TV", "Cornhole" ] },
+          { category: "Laundry", items: [ "Washing machine", "Clothes dryer", "Iron & board" ] },
+          { category: "Parking", items: [ "Gravel driveway and parking", { text: "Shared Tesla charger", note: "Contact owner for details" } ] },
+          { category: "Safety", items: [ "Smoke detector", "Fire extinguisher", "Exterior lighting", "Carbon monoxide detector", "First aid kit" ] },
+          { category: "Location", items: [ "Located in Rockbridge, Ohio — conveniently close to all area attractions", "About 20 minutes from Old Man's Cave; under 10 minutes from Rock House, Cantwell Cliffs and Clear Creek Metro Park", "Lancaster, Ohio and Logan, Ohio are easily accessible" ] },
+          { category: "Nearby Activities", items: [ "Swimming", "Fishing", "Golf", "Hiking", "Bird watching", "Shopping", "Horseback riding", "Wildlife viewing", "Mountain biking", "Ecotourism", "Rock climbing" ] },
+          { category: "Suitability", items: [ "25 minimum age limit for renters" ] }
+        ]
+      },
+      "high-meadows-lodge": {
+        title: "High Meadows Lodge",
+        welcomeTitle: "Welcome to High Meadows Lodge",
+        images: [
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-16.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-2-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-1-3.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-3-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-4-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-5-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-6-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-7-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-8-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-9-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-10-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-11-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-12-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-13-2.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-14-3.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/04/DSC04054-scaled.jpg",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/04/DSC04114-scaled.jpg",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/04/DSC04104-scaled.jpg"
+        ],
+        description: "Welcome to High Meadows Lodge, a custom-built 3,400-square-foot log cabin set across more than 20 acres of beautiful countryside. Designed with space and comfort in mind, this five-bedroom lodge provides a welcoming environment for focused work, shared meals, conversation, and restoration.\n\nGather in the well-equipped kitchen, spend time outdoors, or unwind around the fire pit with Adirondack chairs. With expansive outdoor seating, a game room, and room for up to 12 guests, High Meadows gives your group plenty of space to work, connect, and recharge.",
+        subTitle: "Space to Focus. Room to Recharge.",
+        subDescription: "Step away from the noise of everyday life and give yourself space to focus on what matters. High Meadows Lodge offers a setting where meaningful work, connection, and rest can come together.",
+        video: `<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/770914982?h=1be0fab7b5&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="High Meadows Lodge, Rockbridge Ohio.mp4"></iframe></div>`,
+        bookNowUrl: "https://app.ownerrez.com/widgets/5379185c23d74098a68a57ccd5bc2cd1?view=form",
+        features: [
+          { icon: 'bed', text: "5 Bedrooms (Includes Sleeping Loft)" },
+          { icon: 'users', text: "Accommodates Max 12 Guests" },
+          { icon: 'bath', text: "2 Full Bathrooms" },
+          { icon: 'dog', text: "Dog Friendly" },
+          { icon: 'tub', text: "Hot Tub" },
+          { icon: 'hiking', text: "Hiking On Property" },
+          { icon: 'chairs', text: "Plenty of Outdoor Seating" },
+          { icon: 'fire', text: "Fire Pit" },
+          { icon: 'acres', text: "Private 20+ acres" },
+          { icon: 'compass', text: "Close to area attractions" }
+        ],
+        amenities: [
+          { category: "Essentials", items: [ "Wireless Internet", "Smart TVs", "Dish TV", "Linens provided", "Towels provided", { text: "Pool-type towels", note: "You may choose to bring your own for the hot tub" }, "Hair dryer", { text: "Wood-burning fireplace", note: "Bring your own wood or purchase a bundle for $7" } ] },
+          { category: "Kitchen", items: [ "Microwave", "Refrigerator", "Dishes and utensils", "Traditional coffee maker and Keurig", "Dishwasher", "Stove — electric", "Toaster", "Oven — electric", { text: "Grill", note: "Propane included" }, { text: "Ice maker", note: "Large groups might consider bringing extra ice" }, "Blender", "Dining table", "Kitchen island" ] },
+          { category: "Hot Tub", items: [ { text: "Bring your own pool-type towels for the hot tub" } ] },
+          { category: "Outside", items: [ "Outdoor furniture", "Fire pit", "Cornhole" ] },
+          { category: "Entertainment", items: [ "Dish TV", "Games/puzzles", "Arcade game", "2 Smart TVs" ] },
+          { category: "Laundry", items: [ "Washing machine", "Clothes dryer", "Iron & board", "Laundry detergent and softener sheets provided" ] },
+          { category: "Parking", items: [ "Gravel driveway parking", { text: "Shared Tesla charger on property", note: "Inquire with the owner" } ] },
+          { category: "Safety", items: [ "Smoke detector", "Fire extinguisher", "Exterior lighting", "Carbon monoxide detector", "First aid kit" ] },
+          { category: "Location", items: [ "16.0 miles to Old Man's Cave", "7.3 miles to Rock House", "3.8 miles to Cantwell Cliffs", "11.0 miles to Lake Logan", "5.0 miles to Clear Creek Metro Park" ] },
+          { category: "Nearby Activities", items: [ "Swimming", "Fishing", "Golf", "Hiking", "Bird watching", "Shopping", "Boating", "Horseback riding", "Kayaking", "Wildlife viewing", "Mountain biking", "Antiquing", "Ecotourism", "Rock climbing" ] },
+          { category: "Age Restriction", items: [ "Must be 25 or older to rent" ] }
+        ]
+      },
+      "hidden-meadows": {
+        title: "Hidden Meadows",
+        welcomeTitle: "Welcome to Hidden Meadows",
+        images: [
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-2-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-3-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-1-1-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-4-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-5-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-6-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-7-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-8-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-9-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-11-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-12-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-13-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-14-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-14-1-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2022/11/DSC05484-1024x683.webp",
+          "https://highmeadowslodging.com/wp-content/uploads/2023/03/5583BF53CA6800F8D77C1F3A62FBC0E2-1024x683.jpg"
+        ],
+        description: "Welcome to Hidden Meadows, a newly built 3,200-square-foot lodge surrounded by more than 20 acres of beautiful private space. With hiking trails and plenty of room to relax and recharge, it offers a peaceful environment for stepping away from everyday distractions.\n\nWith five bedrooms and space for up to 12 guests, Hidden Meadows gives groups room to gather, reflect, work, and spend meaningful time together while surrounded by nature.",
+        subTitle: "A Place to Step Away and Reconnect",
+        subDescription: "Sometimes creating meaningful progress starts with creating space. Hidden Meadows offers a quiet setting to slow down, reconnect with yourself and others, and make room for what comes next.",
+        video: `<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/743075019?h=e4927fe73c&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="hidden_meadows_-_hocking_hills (1080p).mp4"></iframe></div>`,
+        bookNowUrl: "https://app.ownerrez.com/widgets/5379185c23d74098a68a57ccd5bc2cd1?view=form",
+        features: [
+          { icon: 'bed', text: "5 Bedrooms" },
+          { icon: 'users', text: "Accommodates 12 Guests Max" },
+          { icon: 'tub', text: "Hot Tub" },
+          { icon: 'bath', text: "3 Full Baths and 1 Half Bath" },
+          { icon: 'fire', text: "Fire Pit" },
+          { icon: 'dining', text: "Patio Dining Area" }
+        ],
+        amenities: [
+          { category: "Essentials", items: [ "Internet", "Linens provided", "Towels provided", { text: "Pool-type towels not provided for the hot tub" }, "Heating", "Hair dryer", "Air conditioning", "Wireless Internet", { text: "Wood-burning fireplace", note: "Bring your own firewood or buy bundles for $7 — pay by cash or Venmo for what you use" }, "Free wifi" ] },
+          { category: "Kitchen", items: [ "Microwave", "Refrigerator", "Dishes & utensils", "Coffee maker", "Keurig and regular coffee maker", "Full kitchen", "Dishwasher", "Stove", "Toaster", "Oven", "Grill", "Ice maker", "Dining table", "Kitchen island" ] },
+          { category: "Hot Tub", items: [ { text: "Bath towels provided", note: "You may want to bring pool-type towels for the hot tub" } ] },
+          { category: "Outside", items: [ "Outdoor furniture", "Fire pit" ] },
+          { category: "Entertainment", items: [ "Dish TV", "Games", "Game room", "Shuffleboard, foosball", "Golden Tee and Pac-Man", "Smart TV" ] },
+          { category: "Laundry", items: [ "Washing machine", "Clothes dryer", "Iron & board" ] },
+          { category: "Parking", items: [ "Gravel driveway and parking", "EV car charger", { text: "Shared Tesla charger on property", note: "Inquire with the owner" } ] },
+          { category: "Safety", items: [ "Smoke detector", "Fire extinguisher", "Exterior lighting", "Carbon monoxide detector" ] },
+          { category: "Nearby Activities", items: [ "Swimming", "Fishing", "Golf", "Hiking", "Bird watching", "Shopping", "Boating", "Horseback riding", "Kayaking", "Wildlife viewing", "Mountain biking", "Antiquing", "Ecotourism", "Rock climbing" ] },
+          { category: "Suitability", items: [ "Minimum age limit applies for renters" ] }
+        ]
+      }
+    },
+    property2: {
+      type: "single",
+      title: "Vermont Farmhouse",
+      welcomeTitle: "Welcome to Vermont Farmhouse",
+      images: [
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/c7c92509-e6e4-4a1a-a89f-79aa5a0750db.jpeg?im_w=1200", caption: "Exterior" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/689712fe-d4e6-4b0a-9d0c-e5eb8d2da972.jpeg?im_w=1200", caption: "Living Room" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/970f52dc-3990-4e34-a4f6-b1f2c295e2a9.jpeg?im_w=720", caption: "Living Room" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/80978fb4-2145-492a-93ae-1c9bdfffb8b3.jpeg?im_w=720", caption: "Living Room" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/434e528f-dc93-461e-8b81-6e576ba50046.jpeg?im_w=1200", caption: "Living Room" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/77b96768-8c13-4b0c-9b63-7eeb026295f5.jpeg?im_w=720", caption: "Full Kitchen" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/fcac0ad9-4608-405c-bcb5-c0554009db4d.jpeg?im_w=720", caption: "Full Kitchen" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/bfb29412-2716-434a-ba41-383a3a729899.jpeg?im_w=720", caption: "Dining Area" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/2122c71f-2fef-43c4-9648-4919523c1266.jpeg?im_w=720", caption: "Dining Area" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/052c681d-d04e-4215-a825-d58ed3a8ffca.jpeg?im_w=720", caption: "Dining Area" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/7c8959d2-8a55-46d8-b276-be5e66d96f49.jpeg?im_w=720", caption: "Bedroom 1 · Queen Bed" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/48a5d7d1-1cad-4882-af3f-cb3a33743d70.jpeg?im_w=720", caption: "Bedroom 1 · Queen Bed" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/07221e7f-679e-41c9-bb93-fdccf3c87e1b.jpeg?im_w=720", caption: "Bedroom 2 · King & Single Bed" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/0a2bf2f9-fffd-4acd-8382-1773fcf0ac3c.jpeg?im_w=720", caption: "Bedroom 2 · King & Single Bed" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/bac08cda-41ba-48b5-a4ec-fd028e166f03.jpeg?im_w=1200", caption: "Bedroom 3 · Single Bed" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/14dd6082-3d87-48f7-a18e-dffe731cf24d.jpeg?im_w=1200", caption: "Bedroom 4 · Single Bed" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/3e08bb51-a14b-4248-93a2-316f5d2fd021.jpeg?im_w=1200", caption: "Bedroom 5 · Single Bed" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/e3ad56f2-540c-4bf6-97f6-d5b3142bdf2a.jpeg?im_w=1200", caption: "Bedroom 6 · Two Single Beds" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/552b040c-26df-4607-9da9-d1ce9f863434.jpeg?im_w=720", caption: "Bedroom 7 · King Bed" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/1285c7f2-991a-4ff1-8ff4-b66143318533.jpeg?im_w=720", caption: "Bedroom 7 · King Bed" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/57d1ec89-b741-4057-a55f-3e33656916d5.jpeg?im_w=1200", caption: "Bedroom 8 · Single Bed" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/bbf9246b-927f-4ee0-8ea8-ea23f1e8b82f.jpeg?im_w=720", caption: "Full Bathroom 1" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/b02a6409-817d-410c-8e97-1d07e04eff25.jpeg?im_w=720", caption: "Full Bathroom 1" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/60e497e8-1669-4389-bdfd-9a7ea7d887ba.jpeg?im_w=720", caption: "Full Bathroom 1" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/95366945-fb81-43b7-9b14-c8579ee91336.jpeg?im_w=720", caption: "Full Bathroom 2" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/9e1ed4c1-59e3-4ea8-81cd-795d5caf4826.jpeg?im_w=720", caption: "Full Bathroom 2" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/81564778-62a1-49eb-8876-fbdd8954a01b.jpeg?im_w=1200", caption: "Half Bathroom" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/dc71a4ad-7c43-47d3-ad1c-7a5c64902b8d.jpeg?im_w=720", caption: "Office" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/699f7c63-0b23-4cb8-8635-28a32255f515.jpeg?im_w=720", caption: "Office" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/5444a94f-9e6f-47a1-965f-1c8d47e0dd6b.jpeg?im_w=1200", caption: "Backyard" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/a40bec91-656e-47f4-abe5-4d482f392a07.jpeg?im_w=720", caption: "Backyard" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/57a24dd0-f03c-4e10-9f24-849d382579af.jpeg?im_w=720", caption: "Backyard" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/9dee19bd-940e-407c-971d-92a410835154.jpeg?im_w=720", caption: "Backyard" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/ba245e22-6daf-485e-a039-b5d239595699.jpeg?im_w=720", caption: "Backyard" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/86433219-12db-4d3b-b245-9153d18d502e.jpeg?im_w=720", caption: "Backyard" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/3c15ab26-687b-447a-a0c8-2e2f0b83eb42.jpeg?im_w=720", caption: "Backyard" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/6f642280-eef7-4dc8-87b3-0459ba938c13.jpeg?im_w=720", caption: "Backyard" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/65db6c09-6246-4faf-9685-acbd7d429197.jpeg?im_w=720", caption: "Backyard" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/57605ac7-0cf1-44a1-a0dd-77638974c350.jpeg?im_w=720", caption: "Backyard" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/d52f8002-f8b8-43db-a855-ab398f9731d8.jpeg?im_w=720", caption: "Patio" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/edace733-0f02-477d-8bb2-e8bb7c65e336.jpeg?im_w=720", caption: "Patio" },
+        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/bf555d7d-ea6c-45c8-897e-270633748d10.jpeg?im_w=720", caption: "Exterior" },
+        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/1609e1d0-5ac5-417a-b382-ab71c6092d4c.jpeg?im_w=720", caption: "Exterior" }
+      ],
+      description: "This historic Vermont farmhouse offers an elegant, comfortable setting for group retreats and gatherings. Filled with vintage and contemporary furnishings, rich textiles, art, and books, the spacious home offers many places to gather, work, reflect, and connect, including a gorgeous chef's kitchen.\n\nSet on 36 private acres in central Vermont, the property offers beautiful mountain views and easy access to local farms, lakes, and ski resorts including Stowe, Sugarbush, and Bolton, all about an hour away.",
+      sections: [
+        {
+          heading: "The Space",
+          paragraphs: [
+            "Views surround you from nearly every window. The atmospheric dining room features a custom dining table and hand-painted mural by Vermont artists, while the great room provides space for lounging, games, group activities, and yoga. Reliable high-speed Starlink internet also makes the house suitable for remote work and streaming.",
+            "The farmhouse has a variety of bedrooms for privacy and flexible group accommodations, with larger rooms configurable as 1 King or 2 XL twin beds. A unique sunroom offers a three-season indoor/outdoor space to work, play, dine, or simply take in the view.",
+            "Outside, two large picnic tables, towering old maple trees, a large grassy lawn, and a fire pit create opportunities for shared meals, outdoor games, walks, and evenings under the stars."
+          ]
+        },
+        {
+          heading: "Room to Step Away",
+          paragraphs: [
+            "With its quiet, private setting and spaces designed for both gathering and solitude, the farmhouse gives you room to focus on meaningful work while also making space for rest, connection, and renewal.",
+            "The property is maintained with a commitment to minimal environmental impact, and rentals support artist, writer, and healer residencies from around the globe."
+          ]
+        },
+        {
+          heading: "Plan Your Retreat",
+          paragraphs: [
+            "The house has beds for 13 people and sleeps 12 comfortably. Smaller groups can inquire about a lower nightly rate. Whether you're coming together to create, collaborate, reflect, or recharge, this Vermont farmhouse offers the space for your retreat to unfold."
+          ]
+        }
+      ],
+      bookNowUrl: "https://www.airbnb.com/rooms/739790232620678178?unique_share_id=e43eb390-7b6f-416d-8d00-57a332463d79&viralityEntryPoint=1&s=76&source_impression_id=p3_1789059574_P3Ja4l4L4hKsw12u",
+      features: [
+        { icon: 'users', text: "12 Guests Max" },
+        { icon: 'bed', text: "8 Bedrooms" },
+        { icon: 'beds', text: "10 Beds" },
+        { icon: 'bath', text: "4.5 Bathrooms" }
+      ],
+      amenities: [
+        { category: "Scenic Views", items: [ "Mountain view" ] },
+        { category: "Bathroom", items: [ "Bathtub", "Hair dryer", "Cleaning products", "Hot water" ] },
+        { category: "Bedroom and Laundry", items: [ "Washer", { text: "Dryer", note: "Free — in unit" }, { text: "Essentials", note: "Towels, bed sheets, soap, and toilet paper" }, "Hangers", { text: "Bed linens", note: "Cotton linens" }, "Extra pillows and blankets", "Room-darkening shades", "Drying rack for clothing", "Clothing storage: closet, wardrobe, and dresser" ] },
+        { category: "Entertainment", items: [ "Ethernet connection", "TV", "Books and reading material" ] },
+        { category: "Family", items: [ "Children's books and toys", "Board games" ] },
+        { category: "Heating and Cooling", items: [ "Portable fans", "Central heating" ] },
+        { category: "Home Safety", items: [ "Smoke alarm", "Carbon monoxide alarm", "Fire extinguisher", "First aid kit" ] },
+        { category: "Internet and Office", items: [ "Wifi", "Dedicated workspace" ] },
+        { category: "Kitchen and Dining", items: [ { text: "Kitchen", note: "Space where guests can cook their own meals" }, "LG refrigerator", "Microwave", { text: "Cooking basics", note: "Pots and pans, oil, salt and pepper" }, { text: "Dishes and silverware", note: "Bowls, chopsticks, plates, cups, etc." }, "Freezer", "Dishwasher", "Wolf stove", "Wolf stainless steel oven", "Hot water kettle", "Coffee maker: drip coffee maker, espresso machine, french press", "Wine glasses", "Toaster", "Baking sheet", { text: "Barbecue utensils", note: "Grill, charcoal, bamboo skewers/iron skewers, etc." }, "Dining table" ] },
+        { category: "Location Features", items: [ { text: "Private entrance", note: "Separate street or building entrance" } ] },
+        { category: "Outdoor", items: [ "Private patio or balcony", { text: "Private backyard", note: "An open space on the property usually covered in grass" }, "Fire pit", "Outdoor furniture", "Outdoor dining area", "BBQ grill" ] },
+        { category: "Parking and Facilities", items: [ "Free parking on premises" ] },
+        { category: "Services", items: [ "Self check-in", { text: "Keypad", note: "Check yourself into the home with a door code" } ] },
+        { category: "Not Included", items: [ { text: "Exterior security cameras on property", excluded: true }, { text: "Air conditioning", excluded: true } ] }
+      ]
+    }
+  };
+
+  // Lightbox State Controls
+  let currentLightboxImages = [];
+  let currentLightboxIndex = 0;
+
+  function openPropertyModal(propertyKey) {
+    const backdrop = document.getElementById('pausa-modal-backdrop');
+    const breadcrumb = document.getElementById('modal-breadcrumb');
+
+    breadcrumb.innerHTML = '';
+
+    if (propertyKey === 'property1') {
+      // CHANGED: instead of showing the 3-lodge overview, jump straight to the
+      // Hidden Meadows details (same behavior as the single-property cards),
+      // but keep the High Meadows Lodging brand logo above it.
+      renderSubPropertyDetail(propertyData.subProperties['hidden-meadows'], false, true);
+    } else if (propertyData[propertyKey]) {
+      renderSubPropertyDetail(propertyData[propertyKey]);
+    }
+
+    backdrop.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function renderSubPropertyDetailById(subId) {
+    const subData = propertyData.subProperties[subId];
+    if (subData) {
+      renderSubPropertyDetail(subData, true);
+    }
+  }
+
+  // CHANGED: added `showBrandLogo` (3rd param) so the High Meadows Lodging
+  // logo can render above the Hidden Meadows detail content.
+  function renderSubPropertyDetail(detailData, showBackToOverview = false, showBrandLogo = false) {
+    const modalBody = document.getElementById('modal-body-content');
+    const breadcrumb = document.getElementById('modal-breadcrumb');
+
+    if (showBackToOverview) {
+      breadcrumb.innerHTML = `
+        <button onclick="renderHighMeadowsOverview()">
+          ← Back to All High Meadows Lodges
+        </button>
+      `;
+    } else {
+      breadcrumb.innerHTML = '';
+    }
+
+    const images = detailData.images || [detailData.image];
+    currentLightboxImages = images;
+
+    const mainImg = images[0] || '';
+    const subImgs = images.slice(1, 5);
+    const totalCount = images.length;
+
+    let galleryHTML = `
+      <div class="modern-gallery-container">
+        <div class="modern-gallery-grid">
+          <div class="gallery-main-item"
+               onclick="openLightbox(0)"
+               role="img"
+               aria-label="${detailData.title} - ${imgCaption(mainImg) || 'main photo'}"
+               style="background-image:url('${imgUrl(mainImg)}');">
+          </div>
+          <div class="gallery-sub-grid">
+            ${subImgs.map((img, index) => {
+              const actualIndex = index + 1;
+              return `
+                <div class="gallery-item"
+                     onclick="openLightbox(${actualIndex})"
+                     role="img"
+                     aria-label="${detailData.title} - ${imgCaption(img) || 'photo'}"
+                     style="background-image:url('${imgUrl(img)}');">
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+        
+        <button class="gallery-view-all-btn" onclick="openLightbox(0)">
+          📷 Show all ${totalCount} photos
+        </button>
+      </div>
+    `;
+
+    const subSectionsHTML = detailData.subTitle
+      ? `
+        <h3 class="detail-subtitle">${detailData.subTitle}</h3>
+        <p class="detail-body-text">${detailData.subDescription}</p>
+      `
+      : (detailData.sections || []).map(sec => `
+        <h3 class="detail-subtitle">${sec.heading}</h3>
+        <div class="detail-body-text">
+          ${sec.paragraphs.map(p => `<p style="margin-bottom:14px;">${p}</p>`).join('')}
+        </div>
+      `).join('');
+
+    const videoHTML = detailData.video ? `
+        <h4 class="features-section-title">Virtual Walk Through</h4>
+        <div class="video-embed-wrapper">${detailData.video}</div>
+      ` : '';
+
+    // CHANGED: optional brand logo header, shown only when showBrandLogo is true
+    const brandLogoHTML = showBrandLogo ? `
+      <div class="modal-hero-header">
+        <img src="${propertyData.property1.logo}" alt="High Meadows Lodging Logo" class="modal-brand-logo">
+      </div>
+    ` : '';
+
+    let html = `
+      ${brandLogoHTML}
+      ${galleryHTML}
+      
+      <div>
+        <h2 class="detail-header-title">${detailData.welcomeTitle}</h2>
+        <div class="detail-body-text">
+          ${detailData.description.split('\n\n').map(p => `<p style="margin-bottom:14px;">${p}</p>`).join('')}
+        </div>
+
+        ${subSectionsHTML}
+
+        <h4 class="features-section-title">Features</h4>
+        
+        <div class="features-grid">
+          ${detailData.features.map(f => `
+            <div class="feature-item">
+              <div class="feature-icon-wrapper">
+                ${featureIcons[f.icon] || ''}
+              </div>
+              <span class="feature-text">${f.text}</span>
+            </div>
+          `).join('')}
+        </div>
+
+        ${renderAmenitiesSection(detailData.amenities, (detailData.title || 'property').toLowerCase().replace(/[^a-z0-9]+/g, '-'))}
+
+        ${videoHTML}
+      </div>
+    `;
+
+    modalBody.innerHTML = html;
+    modalBody.scrollTop = 0;
+
+    if (detailData.video) {
+      ensureVimeoPlayerScript();
+    }
+
+    const bookBar = document.getElementById('modal-booknow-bar');
+    if (bookBar) {
+      if (detailData.bookNowUrl) {
+        bookBar.innerHTML = `<a class="modal-booknow-btn" href="${detailData.bookNowUrl}" target="_blank" rel="noopener noreferrer">Book Now</a>`;
+        bookBar.classList.add('is-visible');
+      } else {
+        bookBar.innerHTML = '';
+        bookBar.classList.remove('is-visible');
+      }
+    }
+  }
+
+  /* LIGHTBOX CONTROLS */
+  function openLightbox(index) {
+    if (!currentLightboxImages.length) return;
+    currentLightboxIndex = index;
+    updateLightbox();
+    
+    const lightbox = document.getElementById('pausa-lightbox');
+    lightbox.classList.add('is-open');
+  }
+
+  function updateLightbox() {
+    const imgEl = document.getElementById('lightbox-img');
+    const captionEl = document.getElementById('lightbox-caption');
+    const counterEl = document.getElementById('lightbox-counter');
+    const prevBtn = document.getElementById('lightbox-prev-btn');
+    const nextBtn = document.getElementById('lightbox-next-btn');
+
+    const current = currentLightboxImages[currentLightboxIndex];
+    imgEl.src = imgUrl(current);
+
+    const caption = imgCaption(current);
+    if (captionEl) {
+      captionEl.textContent = caption;
+      captionEl.style.display = caption ? 'block' : 'none';
+    }
+
+    counterEl.textContent = `${currentLightboxIndex + 1} / ${currentLightboxImages.length}`;
+
+    if (currentLightboxIndex === 0) {
+      prevBtn.classList.add('disabled');
+    } else {
+      prevBtn.classList.remove('disabled');
+    }
+
+    if (currentLightboxIndex === currentLightboxImages.length - 1) {
+      nextBtn.classList.add('disabled');
+    } else {
+      nextBtn.classList.remove('disabled');
+    }
+  }
+
+  function navigateLightbox(direction, event) {
+    if (event) event.stopPropagation();
+    
+    const newIndex = currentLightboxIndex + direction;
+    if (newIndex >= 0 && newIndex < currentLightboxImages.length) {
+      currentLightboxIndex = newIndex;
+      updateLightbox();
+    }
+  }
+
+  function closeLightbox(event) {
+    if (event) event.stopPropagation();
+    const lightbox = document.getElementById('pausa-lightbox');
+    lightbox.classList.remove('is-open');
+  }
+
+  function closePropertyModal(event) {
+    const backdrop = document.getElementById('pausa-modal-backdrop');
+    backdrop.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    const lightbox = document.getElementById('pausa-lightbox');
+    if (lightbox.classList.contains('is-open')) {
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+      if (e.key === 'Escape') closeLightbox();
+    } else if (e.key === 'Escape') {
+      closePropertyModal();
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const animatedContainer = document.querySelector("#pausa-properties .properties-container");
+
+    if (!animatedContainer) return;
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animatedContainer.classList.add("is-visible");
+        } else {
+          animatedContainer.classList.remove("is-visible");
+        }
+      });
+    }, observerOptions);
+
+    observer.observe(animatedContainer);
+  });
+</script>
+<!-- PAUSA RETREATS - WHY THESE SPACES WORK SECTION (EDITORIAL STYLE) -->
+<section id="pausa-why-it-works">
+  <div class="why-container scroll-animate">
+
+    <div class="why-top-row">
+      <span class="why-index-tag">• Creative Environments</span>
+      <span class="why-rule"></span>
+      <span class="why-index-tag why-index-tag-right">Music360 Retreat Spaces</span>
+    </div>
+
+    <h2 class="why-title">Why These Spaces Work<br><em>for Music Retreats</em></h2>
+    <p class="why-subtitle">Designed to help artists step away from the everyday noise, immerse in the craft, and create work that lasts.</p>
+
+    <div class="why-rail">
+      <div class="why-track">
+
+        <div class="why-item">
+          <span class="why-num">01</span>
+          <div class="why-icon-wrap">
+            <svg class="why-icon" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5 5l14 14M19 5L5 19"/></svg>
+          </div>
+          <h3 class="why-item-title">Make Space</h3>
+          <p class="why-item-text">Step away from daily distractions and carve out uninterrupted time dedicated solely to your music and creative process.</p>
+        </div>
+
+        <div class="why-item">
+          <span class="why-num">02</span>
+          <div class="why-icon-wrap">
+            <svg class="why-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="why-item-title">Do the Work</h3>
+          <p class="why-item-text">Utilize open, acoustic-friendly spaces to turn raw ideas into fully realized songs, albums, and collaborative projects.</p>
+        </div>
+
+        <div class="why-item">
+          <span class="why-num">03</span>
+          <div class="why-icon-wrap">
+            <svg class="why-icon" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </div>
+          <h3 class="why-item-title">Connect &amp; Co-Create</h3>
+          <p class="why-item-text">Gather with fellow musicians, producers, and songsmiths in a collaborative setting built for genuine connection and shared energy.</p>
+        </div>
+
+        <div class="why-item">
+          <span class="why-num">04</span>
+          <div class="why-icon-wrap">
+            <svg class="why-icon" viewBox="0 0 24 24"><path d="M12 2c1.13 4.47-2.67 7.23-2 10 0-3.1 3-5.07 3-5.07 1 2.22 4 3.7 4 7.07 0 3.87-3.13 7-7 7s-7-3.13-7-7c0-4.8 5-8.5 9-12z"/></svg>
+          </div>
+          <h3 class="why-item-title">Nourish the Craft</h3>
+          <p class="why-item-text">Balance intense songwriting and recording sessions with good food, nature, quiet rest, and invigorating mountain air.</p>
+        </div>
+
+        <div class="why-item">
+          <span class="why-num">05</span>
+          <div class="why-icon-wrap">
+            <svg class="why-icon" viewBox="0 0 24 24"><path d="M2 12h20M12 2a10 10 0 0 1 0 20M12 2a10 10 0 0 0 0 20"/></svg>
+          </div>
+          <h3 class="why-item-title">Reflect &amp; Reset</h3>
+          <p class="why-item-text">Give yourself the room to pause, clear creative blocks, refine your artistic vision, and return with renewed passion.</p>
+        </div>
+
+        <div class="why-item why-item-featured">
+          <span class="why-num">06</span>
+          <div class="why-icon-wrap">
+            <svg class="why-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <h3 class="why-item-title">Create Lasting Impact</h3>
+          <p class="why-item-text">Leave with more than just a trip—walk away with completed music, a clear creative roadmap, and lifelong artistic bonds.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #pausa-why-it-works {
+    width: 100%;
+    padding: 100px 24px;
+    background: transparent !important;
+    display: flex;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  #pausa-why-it-works *,
+  #pausa-why-it-works *::before,
+  #pausa-why-it-works *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #pausa-why-it-works .why-container {
+    max-width: 1120px;
+    width: 100%;
+  }
+
+  /* ---------- Entrance / exit animation ---------- */
+  #pausa-why-it-works .why-top-row,
+  #pausa-why-it-works .why-title,
+  #pausa-why-it-works .why-subtitle,
+  #pausa-why-it-works .why-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #pausa-why-it-works .why-container.is-visible .why-top-row { opacity: 1; transform: translateY(0); transition-delay: 0.02s; }
+  #pausa-why-it-works .why-container.is-visible .why-title { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+  #pausa-why-it-works .why-container.is-visible .why-subtitle { opacity: 1; transform: translateY(0); transition-delay: 0.18s; }
+  #pausa-why-it-works .why-container.is-visible .why-item:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.26s; }
+  #pausa-why-it-works .why-container.is-visible .why-item:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.32s; }
+  #pausa-why-it-works .why-container.is-visible .why-item:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.38s; }
+  #pausa-why-it-works .why-container.is-visible .why-item:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.44s; }
+  #pausa-why-it-works .why-container.is-visible .why-item:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+  #pausa-why-it-works .why-container.is-visible .why-item:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.56s; }
+
+  /* ---------- Top row ---------- */
+  #pausa-why-it-works .why-top-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+
+  #pausa-why-it-works .why-index-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c88a2b !important;
+    white-space: nowrap;
+  }
+
+  #pausa-why-it-works .why-index-tag-right {
+    color: rgba(0,0,0,0.4) !important;
+  }
+
+  #pausa-why-it-works .why-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(0,0,0,0.12);
+  }
+
+  /* ---------- Title / subtitle ---------- */
+  #pausa-why-it-works .why-title {
+    font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #111111 !important;
+    margin-bottom: 22px;
+  }
+
+  #pausa-why-it-works .why-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: #c88a2b !important;
+  }
+
+  #pausa-why-it-works .why-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4a4a4a !important;
+    max-width: 52ch;
+    margin-bottom: 56px;
+  }
+
+  /* ---------- Rail (desktop: 3-col grid with dividers) ---------- */
+  #pausa-why-it-works .why-track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-row-gap: 44px;
+  }
+
+  #pausa-why-it-works .why-item {
+    position: relative;
+    padding: 0 30px 0 24px;
+    border-left: 1px solid rgba(0,0,0,0.1);
+  }
+
+  #pausa-why-it-works .why-item:nth-child(3n+1) {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  #pausa-why-it-works .why-num {
+    position: absolute;
+    top: -22px;
+    right: -10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgba(0,0,0,0.12);
+    letter-spacing: -0.02em;
+  }
+
+  #pausa-why-it-works .why-icon-wrap {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(200, 138, 43, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    transition: background 0.3s ease;
+  }
+
+  #pausa-why-it-works .why-item:hover .why-icon-wrap {
+    background: #c88a2b;
+  }
+
+  #pausa-why-it-works .why-icon {
+    width: 22px;
+    height: 22px;
+    stroke: #c88a2b;
+    stroke-width: 1.8;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.3s ease;
+  }
+
+  #pausa-why-it-works .why-item:hover .why-icon {
+    stroke: #ffffff;
+  }
+
+  #pausa-why-it-works .why-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111111 !important;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  #pausa-why-it-works .why-item-text {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #555555 !important;
+  }
+
+  /* ---------- Featured item (06) accent ---------- */
+  #pausa-why-it-works .why-item-featured .why-num {
+    color: #c88a2b !important;
+  }
+
+  #pausa-why-it-works .why-item-featured .why-icon-wrap {
+    background: #1c1712;
+  }
+
+  #pausa-why-it-works .why-item-featured .why-icon {
+    stroke: #e2a850;
+  }
+
+  #pausa-why-it-works .why-item-featured:hover .why-icon-wrap {
+    background: #c88a2b;
+  }
+
+  #pausa-why-it-works .why-item-featured:hover .why-icon {
+    stroke: #ffffff;
+  }
+
+  /* ================= MOBILE — app-style redesign ================= */
+  @media (max-width: 768px) {
+    #pausa-why-it-works {
+      padding: 56px 0 60px;
+    }
+
+    #pausa-why-it-works .why-container {
+      padding: 0 20px;
+    }
+
+    #pausa-why-it-works .why-top-row {
+      margin-bottom: 24px;
+    }
+
+    #pausa-why-it-works .why-index-tag {
+      font-size: 0.62rem;
+    }
+
+    #pausa-why-it-works .why-title {
+      font-size: 1.9rem;
+      margin-bottom: 14px;
+    }
+
+    #pausa-why-it-works .why-subtitle {
+      font-size: 0.92rem;
+      max-width: none;
+      margin-bottom: 28px;
+    }
+
+    /* Horizontal swipeable feature strip */
+    #pausa-why-it-works .why-rail {
+      margin: 0 -20px;
+    }
+
+    #pausa-why-it-works .why-track {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 20px;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 20px 8px 20px;
+      scrollbar-width: none;
+    }
+
+    #pausa-why-it-works .why-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    #pausa-why-it-works .why-item {
+      position: relative;
+      overflow: hidden;
+      flex: 0 0 78%;
+      scroll-snap-align: start;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 24px 22px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.05);
+    }
+
+    #pausa-why-it-works .why-item:nth-child(3n+1) {
+      padding-left: 22px;
+    }
+
+    #pausa-why-it-works .why-item-featured {
+      background: #1c1712;
+      border-color: #1c1712;
+    }
+
+    #pausa-why-it-works .why-item-featured .why-item-title,
+    #pausa-why-it-works .why-item-featured .why-item-text {
+      color: #ffffff !important;
+    }
+
+    #pausa-why-it-works .why-item-featured .why-item-text {
+      color: rgba(255,255,255,0.8) !important;
+    }
+
+    #pausa-why-it-works .why-item-featured .why-icon-wrap {
+      background: rgba(200, 138, 43, 0.25);
+    }
+
+    /* Big oversized bleeding number — brand color accent */
+    #pausa-why-it-works .why-num {
+      top: -10px;
+      right: -5px;
+      font-size: 5.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(200, 138, 43, 0.18) !important;
+      letter-spacing: -0.04em;
+      z-index: 0;
+    }
+
+    #pausa-why-it-works .why-item-featured .why-num {
+      color: rgba(200, 138, 43, 0.3) !important;
+    }
+
+    #pausa-why-it-works .why-icon-wrap,
+    #pausa-why-it-works .why-item-title,
+    #pausa-why-it-works .why-item-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    #pausa-why-it-works .why-icon-wrap {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 16px;
+    }
+
+    #pausa-why-it-works .why-item-title {
+      font-size: 1rem;
+    }
+
+    #pausa-why-it-works .why-item-text {
+      font-size: 0.87rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #pausa-why-it-works .why-top-row,
+    #pausa-why-it-works .why-title,
+    #pausa-why-it-works .why-subtitle,
+    #pausa-why-it-works .why-item {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var container = document.querySelector("#pausa-why-it-works .why-container");
+    if (!container) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          container.classList.add("is-visible");
+        } else {
+          container.classList.remove("is-visible");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(container);
+  });
+</script>
+<!-- PAUSA - READY TO MAKE SOME SPACE SECTION (EDITORIAL STYLE) -->
+<section id="pausa-space-section">
+
+  <!-- Left Side Tree -->
+  <div class="space-tree-left" aria-hidden="true">
+    <svg viewBox="-80 0 460 700" preserveAspectRatio="xMinYMax meet">
+      <g>
+        <!-- Back Tree (Darker Warm Tan) -->
+        <rect x="25" y="360" width="18" height="340" rx="4" fill="#8c6a46"/>
+        <line x1="34" y1="480" x2="80" y2="440" stroke="#8c6a46" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="20" cy="370" r="60" fill="#a48057"/>
+        <circle cx="80" cy="330" r="75" fill="#a48057"/>
+        <circle cx="130" cy="385" r="55" fill="#a48057"/>
+
+        <!-- Front Main Tree (Dark Warm Brown Trunk) -->
+        <rect x="130" y="240" width="24" height="460" rx="5" fill="#5c4028"/>
+        <line x1="142" y1="400" x2="65" y2="330" stroke="#5c4028" stroke-width="14" stroke-linecap="round"/>
+        <line x1="142" y1="340" x2="205" y2="280" stroke="#5c4028" stroke-width="12" stroke-linecap="round"/>
+        
+        <!-- Foliage Clusters (Front Main Tree) -->
+        <circle cx="55" cy="500" r="70" fill="#c49a6c"/>
+        <circle cx="160" cy="190" r="105" fill="#caa172"/>
+        <circle cx="230" cy="290" r="65" fill="#b99061"/>
+        <circle cx="55" cy="310" r="65" fill="#b99061"/>
+        <circle cx="150" cy="420" r="50" fill="#d5ac7d"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="space-wrap">
+
+    <div class="space-top-row">
+      <span class="space-index-tag">• Start Your Creative Journey</span>
+      <span class="space-rule"></span>
+      <span class="space-index-tag space-index-tag-right">For Gatherings, Weddings &amp; Events</span>
+    </div>
+
+    <h2 class="space-title">Ready to Make<br><em>Some Space?</em></h2>
+
+    <p class="space-intro">Whether you're planning a music retreat, gathering a creative community, or looking for a place to bring an idea to life, we'd love to hear what you're envisioning.</p>
+
+    <div class="space-feature-rail">
+      <div class="space-feature-track">
+        <div class="space-feature-item">
+          <span class="space-feature-num">01</span>
+          <p class="space-feature-text">Multi-bedroom properties built to comfortably host family reunions and multi-generational trips</p>
+        </div>
+        <div class="space-feature-item">
+          <span class="space-feature-num">02</span>
+          <p class="space-feature-text">Barn and gathering spaces at Holden House, designed for weddings, celebrations, and live performances</p>
+        </div>
+        <div class="space-feature-item">
+          <span class="space-feature-num">03</span>
+          <p class="space-feature-text">Full kitchens, ample common space, and grounds made for slowing down together</p>
+        </div>
+        <div class="space-feature-item">
+          <span class="space-feature-num">04</span>
+          <p class="space-feature-text">Flexible booking for smaller groups at a reduced rate — reach out directly to talk through your dates</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-cta-bar">
+      <a href="#availability" class="space-cta-half space-cta-primary">
+        <span class="space-cta-label">Check Availability</span>
+        <span class="space-cta-arrow">&#8594;</span>
+      </a>
+      <a href="#contact" class="space-cta-half space-cta-secondary">
+        <span class="space-cta-label">Ask About Hosting Your Event</span>
+        <span class="space-cta-arrow">&#8594;</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Right Side Tree (Mirrored) -->
+  <div class="space-tree-right" aria-hidden="true">
+    <svg viewBox="-80 0 460 700" preserveAspectRatio="xMaxYMax meet">
+      <g transform="translate(300, 0) scale(-1, 1)">
+        <!-- Back Tree (Darker Warm Tan) -->
+        <rect x="25" y="360" width="18" height="340" rx="4" fill="#8c6a46"/>
+        <line x1="34" y1="480" x2="80" y2="440" stroke="#8c6a46" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="20" cy="370" r="60" fill="#a48057"/>
+        <circle cx="80" cy="330" r="75" fill="#a48057"/>
+        <circle cx="130" cy="385" r="55" fill="#a48057"/>
+
+        <!-- Front Main Tree (Dark Warm Brown Trunk) -->
+        <rect x="130" y="240" width="24" height="460" rx="5" fill="#5c4028"/>
+        <line x1="142" y1="400" x2="65" y2="330" stroke="#5c4028" stroke-width="14" stroke-linecap="round"/>
+        <line x1="142" y1="340" x2="205" y2="280" stroke="#5c4028" stroke-width="12" stroke-linecap="round"/>
+        
+        <!-- Foliage Clusters (Front Main Tree) -->
+        <circle cx="55" cy="500" r="70" fill="#c49a6c"/>
+        <circle cx="160" cy="190" r="105" fill="#caa172"/>
+        <circle cx="230" cy="290" r="65" fill="#b99061"/>
+        <circle cx="55" cy="310" r="65" fill="#b99061"/>
+        <circle cx="150" cy="420" r="50" fill="#d5ac7d"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Bottom Full-Width Light Grass Bed -->
+  <div class="space-grass-bottom" aria-hidden="true">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,120 L0,55 
+               Q15,15 30,50 Q45,10 60,60 Q75,20 90,55 Q105,5 120,65 Q135,15 150,50 Q165,25 180,60 Q195,10 210,55 
+               Q225,20 240,65 Q255,15 270,50 Q285,5 300,60 Q315,20 330,55 Q345,10 360,65 Q375,25 390,50 
+               Q405,15 420,60 Q435,5 450,55 Q465,20 480,65 Q495,10 510,50 Q525,25 540,60 Q555,15 570,55 
+               Q585,5 600,65 Q615,20 630,50 Q645,10 660,60 Q675,25 690,55 Q705,15 720,65 Q735,5 750,50 
+               Q765,20 780,60 Q795,10 810,55 Q825,25 840,65 Q855,15 870,50 Q885,5 900,60 Q915,20 930,55 
+               Q945,10 960,65 Q975,25 990,50 Q1005,15 1020,60 Q1035,5 1050,55 Q1065,20 1080,65 Q1095,10 1110,50 
+               Q1125,25 1140,60 Q1155,15 1170,55 Q1185,5 1200,50 L1200,120 Z" fill="#d8be9f"/>
+      <path d="M0,120 L0,70 
+               Q20,35 40,75 Q60,25 80,80 Q100,30 120,70 Q140,40 160,80 Q180,25 200,75 
+               Q220,35 240,80 Q260,20 280,70 Q300,35 320,75 Q340,25 360,80 Q380,30 400,70 
+               Q420,40 440,75 Q460,20 480,80 Q500,35 520,70 Q540,25 560,75 Q580,30 600,80 
+               Q620,35 640,70 Q660,20 680,75 Q700,35 720,80 Q740,25 760,70 Q780,40 800,75 
+               Q820,20 840,80 Q860,35 880,70 Q900,25 920,75 Q940,30 960,80 Q980,35 1000,70 
+               Q1020,20 1040,75 Q1060,35 1080,80 Q1100,25 1120,70 Q1140,40 1160,75 Q1180,30 1200,70 L1200,120 Z" fill="#e4d0b6"/>
+    </svg>
+  </div>
+
+</section>
+
+<style>
+  #pausa-space-section {
+    position: relative;
+    width: 100%;
+    padding: 100px 24px 110px;
+    background: transparent !important;
+    display: flex;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  #pausa-space-section *,
+  #pausa-space-section *::before,
+  #pausa-space-section *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #pausa-space-section .space-wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 980px;
+    width: 100%;
+  }
+
+  /* ---------- Side tree decorations ---------- */
+  #pausa-space-section .space-tree-left,
+  #pausa-space-section .space-tree-right {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 370px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #pausa-space-section .space-tree-left {
+    left: 0;
+    transform: translateX(-30px);
+    transition-delay: 0.2s;
+  }
+
+  #pausa-space-section .space-tree-right {
+    right: 0;
+    transform: translateX(30px);
+    transition-delay: 0.5s;
+  }
+
+  #pausa-space-section.space-in-view .space-tree-left,
+  #pausa-space-section.space-in-view .space-tree-right {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  #pausa-space-section .space-tree-left svg,
+  #pausa-space-section .space-tree-right svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* ---------- Bottom Grass Bed ---------- */
+  #pausa-space-section .space-grass-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  #pausa-space-section .space-grass-bottom svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  @media (max-width: 1300px) {
+    #pausa-space-section .space-tree-left,
+    #pausa-space-section .space-tree-right {
+      width: 190px;
+    }
+  }
+
+  /* ---------- Entrance / exit animation ---------- */
+  #pausa-space-section .space-top-row,
+  #pausa-space-section .space-title,
+  #pausa-space-section .space-intro,
+  #pausa-space-section .space-feature-item,
+  #pausa-space-section .space-cta-bar {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #pausa-space-section.space-in-view .space-top-row { opacity: 1; transform: translateY(0); transition-delay: 0.02s; }
+  #pausa-space-section.space-in-view .space-title { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+  #pausa-space-section.space-in-view .space-intro { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+  #pausa-space-section.space-in-view .space-feature-item:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+  #pausa-space-section.space-in-view .space-feature-item:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.38s; }
+  #pausa-space-section.space-in-view .space-feature-item:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.46s; }
+  #pausa-space-section.space-in-view .space-feature-item:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.54s; }
+  #pausa-space-section.space-in-view .space-cta-bar { opacity: 1; transform: translateY(0); transition-delay: 0.64s; }
+
+  /* ---------- Top row ---------- */
+  #pausa-space-section .space-top-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+
+  #pausa-space-section .space-index-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c88a2b !important;
+    white-space: nowrap;
+  }
+
+  #pausa-space-section .space-index-tag-right {
+    color: rgba(0,0,0,0.4) !important;
+  }
+
+  #pausa-space-section .space-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(0,0,0,0.12);
+  }
+
+  /* ---------- Title / intro ---------- */
+  #pausa-space-section .space-title {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #111111 !important;
+    margin-bottom: 28px;
+  }
+
+  #pausa-space-section .space-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: #c88a2b !important;
+  }
+
+  #pausa-space-section .space-intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4a4a4a !important;
+    max-width: 46ch;
+    margin-bottom: 60px;
+  }
+
+  /* ---------- Feature rail (desktop: 4-col grid with dividers) ---------- */
+  #pausa-space-section .space-feature-rail {
+    margin-bottom: 60px;
+  }
+
+  #pausa-space-section .space-feature-track {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #pausa-space-section .space-feature-item {
+    padding: 0 24px 0 0;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    padding-left: 20px;
+  }
+
+  #pausa-space-section .space-feature-item:first-child {
+    border-left: none;
+    padding-left: 32px;
+  }
+
+  #pausa-space-section .space-feature-num {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #c88a2b !important;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+  }
+
+  #pausa-space-section .space-feature-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #2c2c2c !important;
+  }
+
+  /* ---------- CTA bar ---------- */
+  #pausa-space-section .space-cta-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid rgba(0,0,0,0.14);
+    border-bottom: 1px solid rgba(0,0,0,0.14);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  #pausa-space-section .space-cta-half {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 26px 8px;
+    transition: background 0.35s ease, padding-left 0.35s ease;
+  }
+
+  #pausa-space-section .space-cta-primary {
+    border-right: 1px solid rgba(0,0,0,0.14);
+  }
+
+  #pausa-space-section .space-cta-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111111 !important;
+  }
+
+  #pausa-space-section .space-cta-arrow {
+    font-size: 1.1rem;
+    color: #c88a2b !important;
+    transition: transform 0.35s ease;
+  }
+
+  #pausa-space-section .space-cta-half:hover {
+    background: rgba(200,138,43,0.06);
+    padding-left: 16px;
+  }
+
+  #pausa-space-section .space-cta-half:hover .space-cta-arrow {
+    transform: translateX(6px);
+  }
+
+  /* ================= MOBILE — app-style redesign ================= */
+  @media (max-width: 768px) {
+    #pausa-space-section {
+      padding: 56px 0 80px;
+    }
+
+    #pausa-space-section .space-tree-left,
+    #pausa-space-section .space-tree-right {
+      display: none;
+    }
+
+    #pausa-space-section .space-wrap {
+      padding: 0 20px;
+    }
+
+    #pausa-space-section .space-top-row {
+      margin-bottom: 24px;
+    }
+
+    #pausa-space-section .space-index-tag {
+      font-size: 0.62rem;
+    }
+
+    #pausa-space-section .space-title {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    #pausa-space-section .space-intro {
+      font-size: 0.92rem;
+      max-width: none;
+      margin-bottom: 32px;
+    }
+
+    /* Horizontal swipeable feature strip */
+    #pausa-space-section .space-feature-rail {
+      margin: 0 -20px 36px;
+      padding-left: 0;
+    }
+
+    #pausa-space-section .space-feature-track {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 20px;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 20px 4px 20px;
+      scrollbar-width: none;
+    }
+
+    #pausa-space-section .space-feature-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    #pausa-space-section .space-feature-item {
+      flex: 0 0 78%;
+      scroll-snap-align: start;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.05);
+    }
+
+    #pausa-space-section .space-feature-item .space-feature-num {
+      font-size: 0.9rem;
+      margin: 0 0 10px 0;
+      display: block;
+    }
+
+    #pausa-space-section .space-feature-item .space-feature-text {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* CTA bar becomes stacked full-width tappable rows */
+    #pausa-space-section .space-cta-bar {
+      grid-template-columns: 1fr;
+      border: none;
+      gap: 10px;
+      background: transparent;
+    }
+
+    #pausa-space-section .space-cta-half {
+      background: #1c1712;
+      border: none !important;
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+
+    #pausa-space-section .space-cta-half .space-cta-label {
+      color: #ffffff !important;
+      font-size: 0.94rem;
+    }
+
+    #pausa-space-section .space-cta-secondary {
+      background: #ffffff;
+      border: 1.5px solid rgba(0,0,0,0.15) !important;
+    }
+
+    #pausa-space-section .space-cta-secondary .space-cta-label {
+      color: #111111 !important;
+    }
+
+    #pausa-space-section .space-cta-secondary .space-cta-arrow {
+      color: #c88a2b !important;
+    }
+
+    #pausa-space-section .space-cta-primary .space-cta-arrow {
+      color: #c88a2b !important;
+    }
+
+    #pausa-space-section .space-cta-half:active {
+      transform: scale(0.97);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #pausa-space-section .space-top-row,
+    #pausa-space-section .space-title,
+    #pausa-space-section .space-intro,
+    #pausa-space-section .space-feature-item,
+    #pausa-space-section .space-cta-bar,
+    #pausa-space-section .space-tree-left,
+    #pausa-space-section .space-tree-right {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    var section = document.getElementById('pausa-space-section');
+    if (!section) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          section.classList.add('space-in-view');
+        } else {
+          section.classList.remove('space-in-view');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+  })();
+</script>
+
+  <footer class="custom-site-footer">
+    <div class="footer-grid">
+      
+      <!-- Brand Column -->
+      <div class="footer-brand-col">
+        <h2 class="footer-brand-title">Pausa Properties</h2>
+        <p class="footer-brand-tagline">Spaces to pause. Places to create.</p>
+        <p class="footer-brand-desc">
+          Thoughtfully selected spaces for meaningful retreats, creative work, and connection.
+        </p>
+        
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/music360page" class="footer-social-link" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/musicthreesixty/" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation Column -->
+      <div class="footer-links-col">
+        <h3 class="footer-col-title">Navigation</h3>
+        <ul class="footer-links-list">
+          <li><a href="#pausa-properties" class="footer-link">Properties</a></li>
+          <li><a href="#inquire" class="footer-link">Inquire</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Footer Subbar -->
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2026 Pausa Properties. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#" class="footer-bottom-link">Privacy Policy</a>
+        <a href="#" class="footer-bottom-link">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
