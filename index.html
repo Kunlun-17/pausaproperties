@@ -14,6 +14,7 @@
       margin: 0 !important;
       padding: 0 !important;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     #hero-sec {
@@ -441,264 +442,6 @@
       border-radius: 4px;
     }
   </style>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pausa Properties - Footer</title>
-
-  <style>
-    /* --- FORCE KAJABI PARENT WRAPPERS TO CLING TO THE EDGES --- */
-    .kjb-section,
-    .section,
-    .container,
-    .row,
-    .sizer,
-    [data-custom-html-block],
-    .custom-html,
-    .custom-code {
-      width: 100% !important;
-      max-width: 100% !important;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-
-    /* Force page layout from top to bottom */
-    html, body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    /* --- EDGE-TO-EDGE EXPANDED FOOTER CONTAINER --- */
-    .custom-site-footer {
-      --brand-accent: #c88a2b;
-      --brand-accent-hover: #e2a850;
-      --dark-charcoal: #111111;
-      --text-muted: #666666;
-      --border-color: rgba(200, 138, 43, 0.15);
-      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: transparent !important;
-      color: var(--dark-charcoal);
-      
-      /* Force true 100vw edge-to-edge covering */
-      width: 100vw !important;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw !important;
-      margin-right: -50vw !important;
-      
-      padding: 80px max(4%, calc((100vw - 1200px) / 2 + 40px)) 40px max(4%, calc((100vw - 1200px) / 2 + 40px));
-      box-sizing: border-box;
-      border-top: 1px solid var(--border-color);
-      margin-top: auto !important; 
-    }
-
-    .footer-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.8fr 1fr; /* Two main distinct sections */
-      gap: 60px;
-      padding-bottom: 50px;
-    }
-
-    /* --- BRAND COLUMN --- */
-    .footer-brand-col {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
-    }
-
-    .footer-brand-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--dark-charcoal);
-      letter-spacing: -0.01em;
-      margin: 0 0 6px 0;
-    }
-
-    .footer-brand-tagline {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--brand-accent);
-      margin: 0 0 16px 0;
-      letter-spacing: 0.02em;
-    }
-
-    .footer-brand-desc {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin: 0 0 24px 0;
-      max-width: 360px;
-    }
-
-    /* --- SOCIAL LINKS --- */
-    .footer-socials {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .footer-social-link {
-      color: var(--dark-charcoal);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: rgba(200, 138, 43, 0.08);
-      border: 1px solid rgba(200, 138, 43, 0.2);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-smooth);
-      text-decoration: none;
-    }
-
-    .footer-social-link:hover {
-      background-color: var(--brand-accent);
-      color: #ffffff;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(200, 138, 43, 0.25);
-    }
-
-    /* --- NAVIGATION COLUMN --- */
-    .footer-links-col {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
-    }
-
-    .footer-col-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--dark-charcoal);
-      margin: 0 0 20px 0;
-      padding: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .footer-links-list {
-      list-style: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      width: 100%;
-    }
-
-    .footer-links-list li {
-      margin: 0 !important;
-      padding: 0 !important;
-      list-style-type: none !important;
-    }
-
-    .footer-link {
-      font-size: 1rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: var(--transition-smooth);
-      display: inline-block;
-      position: relative;
-    }
-
-    .footer-link:hover {
-      color: var(--brand-accent);
-    }
-
-    .footer-link::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 100%;
-      height: 1.5px;
-      background-color: var(--brand-accent);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .footer-link:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    /* --- FOOTER BOTTOM SUBBAR --- */
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 0 auto;
-      border-top: 1px solid var(--border-color);
-      padding-top: 28px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .footer-copyright {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    .footer-bottom-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-bottom-link {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: var(--transition-smooth);
-      position: relative;
-    }
-
-    .footer-bottom-link:hover {
-      color: var(--brand-accent);
-    }
-
-    /* --- RESPONSIVE MOBILE SCALING --- */
-    @media (max-width: 768px) {
-      .custom-site-footer {
-        padding: 60px 20px 30px 20px !important;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding-bottom: 36px;
-      }
-
-      .footer-brand-desc {
-        max-width: 100%;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 16px;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -743,10 +486,9 @@
 
       <nav>
         <ul class="nav-links">
-          <li><a href="#pausa-properties">Properties  </a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#stories">Retreats</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#pausa-story-section">About</a></li>
         </ul>
       </nav>
 
@@ -805,6 +547,8 @@
       setInterval(nextSlide, slideInterval);
     });
   </script>
+
+
 
 <!-- PAUSA - THE STORY BEHIND THE NAME -->
 <section id="pausa-story-section">
@@ -1093,6 +837,7 @@
     }
   }
 </style>
+
 <!-- PAUSA PROPERTIES - FEATURED PROPERTIES SECTION -->
 <section id="pausa-properties">
   <div class="properties-container scroll-animate">
@@ -3042,6 +2787,7 @@ More properties are joining the collection soon, each one selected to offer the 
     observer.observe(animatedContainer);
   });
 </script>
+
 <!-- PAUSA RETREATS - WHY THESE SPACES WORK SECTION (EDITORIAL STYLE) -->
 <section id="pausa-why-it-works">
   <div class="why-container scroll-animate">
@@ -3122,7 +2868,7 @@ More properties are joining the collection soon, each one selected to offer the 
   #pausa-why-it-works {
     width: 100%;
     padding: 100px 24px;
-    background: transparent !important;
+    background: #f9f6f0 !important;
     display: flex;
     justify-content: center;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -3224,18 +2970,44 @@ More properties are joining the collection soon, each one selected to offer the 
   #pausa-why-it-works .why-item {
     position: relative;
     padding: 0 30px 0 24px;
-    border-left: 1px solid rgba(0,0,0,0.1);
   }
 
-  #pausa-why-it-works .why-item:nth-child(3n+1) {
-    border-left: none;
-    padding-left: 0;
+  /* Dividers as pseudo-elements (instead of border-left/border-right) so they
+     can start below the number tag, leaving a gap instead of running through
+     it. Desktop only — mobile keeps its own card border untouched. */
+  @media (min-width: 769px) {
+    #pausa-why-it-works .why-item::before {
+      content: "";
+      position: absolute;
+      top: 26px;
+      bottom: 0;
+      left: 0;
+      width: 1px;
+      background: rgba(0,0,0,0.1);
+    }
+
+    #pausa-why-it-works .why-item:nth-child(3n+1)::before {
+      display: none;
+    }
+
+    /* Close the row with a divider after the last column (items 03 and 06)
+       so their number tags have a line to sit on, matching 01/02/04/05. */
+    #pausa-why-it-works .why-item:nth-child(3n)::after {
+      content: "";
+      position: absolute;
+      top: 26px;
+      bottom: 0;
+      right: 0;
+      width: 1px;
+      background: rgba(0,0,0,0.1);
+    }
   }
 
   #pausa-why-it-works .why-num {
     position: absolute;
-    top: -22px;
-    right: -10px;
+    top: -6px;
+    right: 0;
+    transform: translateX(50%);
     font-size: 1.1rem;
     font-weight: 700;
     color: rgba(0,0,0,0.12);
@@ -3395,6 +3167,7 @@ More properties are joining the collection soon, each one selected to offer the 
     #pausa-why-it-works .why-num {
       top: -10px;
       right: -5px;
+      transform: none;
       font-size: 5.5rem;
       font-weight: 800;
       line-height: 1;
@@ -3459,6 +3232,7 @@ More properties are joining the collection soon, each one selected to offer the 
     observer.observe(container);
   });
 </script>
+
 <!-- PAUSA - READY TO MAKE SOME SPACE SECTION (EDITORIAL STYLE) -->
 <section id="pausa-space-section">
 
@@ -3977,7 +3751,263 @@ More properties are joining the collection soon, each one selected to offer the 
   })();
 </script>
 
-  <footer class="custom-site-footer">
+<!-- PAUSA PROPERTIES - FOOTER SECTION -->
+<style>
+    /* --- FORCE KAJABI PARENT WRAPPERS TO CLING TO THE EDGES --- */
+    .kjb-section,
+    .section,
+    .container,
+    .row,
+    .sizer,
+    [data-custom-html-block],
+    .custom-html,
+    .custom-code {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    /* Force page layout from top to bottom */
+    html, body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* --- EDGE-TO-EDGE EXPANDED FOOTER CONTAINER --- */
+    .custom-site-footer {
+      --brand-accent: #c88a2b;
+      --brand-accent-hover: #e2a850;
+      --dark-charcoal: #111111;
+      --text-muted: #666666;
+      --border-color: rgba(200, 138, 43, 0.15);
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: transparent !important;
+      color: var(--dark-charcoal);
+      
+      /* Force true 100vw edge-to-edge covering */
+      width: 100vw !important;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw !important;
+      margin-right: -50vw !important;
+      
+      padding: 80px max(4%, calc((100vw - 1200px) / 2 + 40px)) 40px max(4%, calc((100vw - 1200px) / 2 + 40px));
+      box-sizing: border-box;
+      border-top: 1px solid var(--border-color);
+      margin-top: auto !important; 
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.8fr 1fr; /* Two main distinct sections */
+      gap: 60px;
+      padding-bottom: 50px;
+    }
+
+    /* --- BRAND COLUMN --- */
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .footer-brand-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark-charcoal);
+      letter-spacing: -0.01em;
+      margin: 0 0 6px 0;
+    }
+
+    .footer-brand-tagline {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--brand-accent);
+      margin: 0 0 16px 0;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-brand-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0 0 24px 0;
+      max-width: 360px;
+    }
+
+    /* --- SOCIAL LINKS --- */
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-social-link {
+      color: var(--dark-charcoal);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(200, 138, 43, 0.08);
+      border: 1px solid rgba(200, 138, 43, 0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+      text-decoration: none;
+    }
+
+    .footer-social-link:hover {
+      background-color: var(--brand-accent);
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(200, 138, 43, 0.25);
+    }
+
+    /* --- NAVIGATION COLUMN --- */
+    .footer-links-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .footer-col-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark-charcoal);
+      margin: 0 0 20px 0;
+      padding: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links-list {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .footer-links-list li {
+      margin: 0 !important;
+      padding: 0 !important;
+      list-style-type: none !important;
+    }
+
+    .footer-link {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      display: inline-block;
+      position: relative;
+    }
+
+    .footer-link:hover {
+      color: var(--brand-accent);
+    }
+
+    .footer-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: var(--brand-accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .footer-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* --- FOOTER BOTTOM SUBBAR --- */
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-copyright {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-link {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .footer-bottom-link:hover {
+      color: var(--brand-accent);
+    }
+
+    /* --- RESPONSIVE MOBILE SCALING --- */
+    @media (max-width: 768px) {
+      .custom-site-footer {
+        padding: 60px 20px 30px 20px !important;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-bottom: 36px;
+      }
+
+      .footer-brand-desc {
+        max-width: 100%;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+      }
+    }
+  </style>
+
+<footer class="custom-site-footer">
     <div class="footer-grid">
       
       <!-- Brand Column -->
@@ -4002,7 +4032,7 @@ More properties are joining the collection soon, each one selected to offer the 
       <div class="footer-links-col">
         <h3 class="footer-col-title">Navigation</h3>
         <ul class="footer-links-list">
-          <li><a href="#pausa-properties" class="footer-link">Properties</a></li>
+          <li><a href="#properties" class="footer-link">Properties</a></li>
           <li><a href="#inquire" class="footer-link">Inquire</a></li>
         </ul>
       </div>
@@ -4018,6 +4048,7 @@ More properties are joining the collection soon, each one selected to offer the 
       </div>
     </div>
   </footer>
+
 
 </body>
 </html>
