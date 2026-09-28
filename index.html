@@ -158,9 +158,10 @@
     }
 
     #hero-sec .brand-logo-img {
-      height: 32px;
+      height: 42px;
       width: auto;
       display: block;
+      object-fit: contain;
     }
 
     #hero-sec .nav-links {
@@ -314,7 +315,10 @@
       }
 
       #hero-sec .brand-logo-img {
-        height: 26px;
+        height: 34px;
+        max-width: 190px;
+        width: auto;
+        object-fit: contain;
       }
 
       #hero-sec .hero-overlay {
@@ -385,6 +389,19 @@
 
     /* Extra-tight breakpoint for smaller phones */
     @media (max-width: 380px) {
+      #hero-sec .brand-logo-img {
+        height: 30px;
+        max-width: 165px;
+      }
+
+      #hero-sec .glass-header {
+        padding: 7px 14px;
+      }
+
+      .footer-brand-logo-img {
+        width: 250px;
+      }
+
       #hero-sec .hero-title {
         font-size: 1.4rem;
       }
@@ -3848,9 +3865,11 @@ Pausa is a musical term, the mark in a score that tells the musicians to hold st
     }
 
     .footer-brand-logo-img {
-      height: 40px;
-      width: auto;
+      width: 300px;
+      max-width: 100%;
+      height: auto;
       display: block;
+      object-fit: contain;
       margin: 0 0 12px 0;
     }
 
@@ -4009,6 +4028,12 @@ Pausa is a musical term, the mark in a score that tells the musicians to hold st
         grid-template-columns: 1fr;
         gap: 40px;
         padding-bottom: 36px;
+      }
+
+      .footer-brand-logo-img {
+        width: 280px;
+        max-width: 100%;
+        height: auto;
       }
 
       .footer-brand-desc {
