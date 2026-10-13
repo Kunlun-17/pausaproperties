@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Pausa Properties | Private Retreat Homes &amp; Cabins for Groups</title>
   <meta name="description" content="Pausa Properties offers private cabins &amp; farmhouses in Hocking Hills, OH and Vermont — ideal for reunions, retreats, weddings &amp; getaways with loved ones.">
-  <link rel="icon" type="image/png" href="https://github.com/Kunlun-17/pausaproperties/blob/main/pausa_properties_favicon.png?raw=true">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Kunlun-17/pausaproperties/refs/heads/main/assets/image/logo/pausa_properties_favicon.png">
   <!-- Google Fonts for Modern Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -506,7 +506,7 @@
 
     <header class="glass-header">
       <a href="#" class="brand-logo">
-        <img src="https://raw.githubusercontent.com/Kunlun-17/pausaproperties/refs/heads/main/pausa_properties_logo_v5.png" alt="Pausa Properties logo" class="brand-logo-img">
+        <img src="https://raw.githubusercontent.com/Kunlun-17/pausaproperties/refs/heads/main/assets/image/logo/pausa_properties_logo_v6.png" alt="Pausa Properties logo" class="brand-logo-img">
       </a>
 
       <nav>
@@ -2208,6 +2208,11 @@ Pausa is a musical term, the mark in a score that tells the musicians to hold st
   const amenityExcludedIcon = `<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
   const amenityChevronIcon = `<svg class="amenity-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
 
+  // ---- Self-hosted image bases (GitHub repo: Kunlun-17/pausaproperties) ----
+  // File names below are already URL-encoded (spaces = %20, "·" = %C2%B7, "&" = %26).
+  const HM_BASE = "https://raw.githubusercontent.com/Kunlun-17/pausaproperties/refs/heads/main/assets/image/hidden%20meadows/";
+  const HH_BASE = "https://raw.githubusercontent.com/Kunlun-17/pausaproperties/refs/heads/main/assets/image/holden%20house/";
+
   function imgUrl(item) {
     return (item && typeof item === 'object') ? item.url : item;
   }
@@ -2416,23 +2421,25 @@ Pausa is a musical term, the mark in a score that tells the musicians to hold st
       "hidden-meadows": {
         title: "Hidden Meadows",
         welcomeTitle: "Welcome to Hidden Meadows",
+        // First 5 = the preview gallery (first one is the cover photo).
+        // Remaining 11 = shown when the visitor clicks "Show all photos".
         images: [
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-2-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-3-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-1-1-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-4-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-5-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-6-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-7-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-8-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-9-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-11-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-12-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-13-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-14-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/rsw_1440h_1440-14-1-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2022/11/DSC05484-1024x683.webp",
-          "https://highmeadowslodging.com/wp-content/uploads/2023/03/5583BF53CA6800F8D77C1F3A62FBC0E2-1024x683.jpg"
+          HM_BASE + "rsw_1440h_1440-2-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-3-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-1-1-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-4-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-11-1024x683.webp",
+          HM_BASE + "DSC05484-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-12-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-13-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-14-1-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-14-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-5-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-6-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-7-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-8-1024x683.webp",
+          HM_BASE + "rsw_1440h_1440-9-1024x683.webp",
+          HM_BASE + "5583BF53CA6800F8D77C1F3A62FBC0E2-1024x683.webp"
         ],
         description: "Welcome to Hidden Meadows, a newly built 3,200-square-foot lodge surrounded by more than 20 acres of beautiful private space. With hiking trails and plenty of room to relax and recharge, it offers a peaceful environment for stepping away from everyday distractions.\n\nWith five bedrooms and space for up to 12 guests, Hidden Meadows gives groups room to gather, reflect, work, and spend meaningful time together while surrounded by nature.",
         subTitle: "A Place to Step Away and Reconnect",
@@ -2465,50 +2472,60 @@ Pausa is a musical term, the mark in a score that tells the musicians to hold st
       type: "single",
       title: "Vermont Farmhouse",
       welcomeTitle: "Welcome to Vermont Farmhouse",
+      // First 5 = the preview gallery (first one is the cover photo).
+      // The rest show when the visitor clicks "Show all photos".
       images: [
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/c7c92509-e6e4-4a1a-a89f-79aa5a0750db.jpeg?im_w=1200", caption: "Exterior" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/689712fe-d4e6-4b0a-9d0c-e5eb8d2da972.jpeg?im_w=1200", caption: "Living Room" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/970f52dc-3990-4e34-a4f6-b1f2c295e2a9.jpeg?im_w=720", caption: "Living Room" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/80978fb4-2145-492a-93ae-1c9bdfffb8b3.jpeg?im_w=720", caption: "Living Room" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/434e528f-dc93-461e-8b81-6e576ba50046.jpeg?im_w=1200", caption: "Living Room" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/77b96768-8c13-4b0c-9b63-7eeb026295f5.jpeg?im_w=720", caption: "Full Kitchen" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/fcac0ad9-4608-405c-bcb5-c0554009db4d.jpeg?im_w=720", caption: "Full Kitchen" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/bfb29412-2716-434a-ba41-383a3a729899.jpeg?im_w=720", caption: "Dining Area" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/2122c71f-2fef-43c4-9648-4919523c1266.jpeg?im_w=720", caption: "Dining Area" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/052c681d-d04e-4215-a825-d58ed3a8ffca.jpeg?im_w=720", caption: "Dining Area" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/7c8959d2-8a55-46d8-b276-be5e66d96f49.jpeg?im_w=720", caption: "Bedroom 1 · Queen Bed" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/48a5d7d1-1cad-4882-af3f-cb3a33743d70.jpeg?im_w=720", caption: "Bedroom 1 · Queen Bed" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/07221e7f-679e-41c9-bb93-fdccf3c87e1b.jpeg?im_w=720", caption: "Bedroom 2 · King & Single Bed" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/0a2bf2f9-fffd-4acd-8382-1773fcf0ac3c.jpeg?im_w=720", caption: "Bedroom 2 · King & Single Bed" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/bac08cda-41ba-48b5-a4ec-fd028e166f03.jpeg?im_w=1200", caption: "Bedroom 3 · Single Bed" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/14dd6082-3d87-48f7-a18e-dffe731cf24d.jpeg?im_w=1200", caption: "Bedroom 4 · Single Bed" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/3e08bb51-a14b-4248-93a2-316f5d2fd021.jpeg?im_w=1200", caption: "Bedroom 5 · Single Bed" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/e3ad56f2-540c-4bf6-97f6-d5b3142bdf2a.jpeg?im_w=1200", caption: "Bedroom 6 · Two Single Beds" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/552b040c-26df-4607-9da9-d1ce9f863434.jpeg?im_w=720", caption: "Bedroom 7 · King Bed" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/1285c7f2-991a-4ff1-8ff4-b66143318533.jpeg?im_w=720", caption: "Bedroom 7 · King Bed" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/57d1ec89-b741-4057-a55f-3e33656916d5.jpeg?im_w=1200", caption: "Bedroom 8 · Single Bed" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/bbf9246b-927f-4ee0-8ea8-ea23f1e8b82f.jpeg?im_w=720", caption: "Full Bathroom 1" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/b02a6409-817d-410c-8e97-1d07e04eff25.jpeg?im_w=720", caption: "Full Bathroom 1" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/60e497e8-1669-4389-bdfd-9a7ea7d887ba.jpeg?im_w=720", caption: "Full Bathroom 1" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/95366945-fb81-43b7-9b14-c8579ee91336.jpeg?im_w=720", caption: "Full Bathroom 2" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/9e1ed4c1-59e3-4ea8-81cd-795d5caf4826.jpeg?im_w=720", caption: "Full Bathroom 2" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/81564778-62a1-49eb-8876-fbdd8954a01b.jpeg?im_w=1200", caption: "Half Bathroom" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/dc71a4ad-7c43-47d3-ad1c-7a5c64902b8d.jpeg?im_w=720", caption: "Office" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/699f7c63-0b23-4cb8-8635-28a32255f515.jpeg?im_w=720", caption: "Office" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/5444a94f-9e6f-47a1-965f-1c8d47e0dd6b.jpeg?im_w=1200", caption: "Backyard" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/a40bec91-656e-47f4-abe5-4d482f392a07.jpeg?im_w=720", caption: "Backyard" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/57a24dd0-f03c-4e10-9f24-849d382579af.jpeg?im_w=720", caption: "Backyard" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/9dee19bd-940e-407c-971d-92a410835154.jpeg?im_w=720", caption: "Backyard" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/ba245e22-6daf-485e-a039-b5d239595699.jpeg?im_w=720", caption: "Backyard" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/86433219-12db-4d3b-b245-9153d18d502e.jpeg?im_w=720", caption: "Backyard" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/3c15ab26-687b-447a-a0c8-2e2f0b83eb42.jpeg?im_w=720", caption: "Backyard" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/6f642280-eef7-4dc8-87b3-0459ba938c13.jpeg?im_w=720", caption: "Backyard" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/65db6c09-6246-4faf-9685-acbd7d429197.jpeg?im_w=720", caption: "Backyard" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/57605ac7-0cf1-44a1-a0dd-77638974c350.jpeg?im_w=720", caption: "Backyard" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/d52f8002-f8b8-43db-a855-ab398f9731d8.jpeg?im_w=720", caption: "Patio" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/edace733-0f02-477d-8bb2-e8bb7c65e336.jpeg?im_w=720", caption: "Patio" },
-        { url: "https://a0.muscache.com/im/pictures/miso/Hosting-739790232620678178/original/bf555d7d-ea6c-45c8-897e-270633748d10.jpeg?im_w=720", caption: "Exterior" },
-        { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzM5NzkwMjMyNjIwNjc4MTc4/original/1609e1d0-5ac5-417a-b382-ab71c6092d4c.jpeg?im_w=720", caption: "Exterior" }
+        { url: HH_BASE + "Exterior.avif", caption: "Exterior" },
+        { url: HH_BASE + "Living%20Room%201.avif", caption: "Living Room" },
+        { url: HH_BASE + "Living%20Room%202.avif", caption: "Living Room" },
+        { url: HH_BASE + "Living%20Room%203.avif", caption: "Living Room" },
+        { url: HH_BASE + "Living%20Room%204.avif", caption: "Living Room" },
+
+        { url: HH_BASE + "full%20kitchen%201.avif", caption: "Full Kitchen" },
+        { url: HH_BASE + "full%20kitchen%202.avif", caption: "Full Kitchen" },
+
+        { url: HH_BASE + "Dining%20Area%201.avif", caption: "Dining Area" },
+        { url: HH_BASE + "Dining%20Area%202.avif", caption: "Dining Area" },
+        { url: HH_BASE + "Dining%20Area%203.avif", caption: "Dining Area" },
+
+        { url: HH_BASE + "Bedroom%201%20%C2%B7%20Queen%20Bed%201.avif", caption: "Bedroom 1 · Queen Bed" },
+        { url: HH_BASE + "Bedroom%201%20%C2%B7%20Queen%20Bed%202.avif", caption: "Bedroom 1 · Queen Bed" },
+        { url: HH_BASE + "Bedroom%202%20%C2%B7%20King%20%26%20Single%20Bed%201.avif", caption: "Bedroom 2 · King & Single Bed" },
+        { url: HH_BASE + "Bedroom%202%20%C2%B7%20King%20%26%20Single%20Bed%202.avif", caption: "Bedroom 2 · King & Single Bed" },
+        { url: HH_BASE + "Bedroom%203%20%C2%B7%20Single%20Bed.avif", caption: "Bedroom 3 · Single Bed" },
+        { url: HH_BASE + "Bedroom%204%20%C2%B7%20Single%20Bed.avif", caption: "Bedroom 4 · Single Bed" },
+        { url: HH_BASE + "Bedroom%205%20%C2%B7%20Single%20Bed.avif", caption: "Bedroom 5 · Single Bed" },
+        { url: HH_BASE + "Bedroom%206%20%C2%B7%20Two%20Single%20Beds.avif", caption: "Bedroom 6 · Two Single Beds" },
+        { url: HH_BASE + "Bedroom%207%20%C2%B7%20King%20Bed%201.avif", caption: "Bedroom 7 · King Bed" },
+        { url: HH_BASE + "Bedroom%207%20%C2%B7%20King%20Bed%202.avif", caption: "Bedroom 7 · King Bed" },
+        { url: HH_BASE + "Bedroom%208%20%C2%B7%20Single%20Bed.avif", caption: "Bedroom 8 · Single Bed" },
+
+        { url: HH_BASE + "full%20bathroom%201%20(1).avif", caption: "Full Bathroom 1" },
+        { url: HH_BASE + "full%20bathroom%201%20(2).avif", caption: "Full Bathroom 1" },
+        { url: HH_BASE + "full%20bathroom%201%20(3).avif", caption: "Full Bathroom 1" },
+        { url: HH_BASE + "full%20bathroom%202%20(1).avif", caption: "Full Bathroom 2" },
+        { url: HH_BASE + "full%20bathroom%202%20(2).avif", caption: "Full Bathroom 2" },
+        { url: HH_BASE + "half%20bathroom.avif", caption: "Half Bathroom" },
+
+        { url: HH_BASE + "office%201.avif", caption: "Office" },
+        { url: HH_BASE + "office%202.avif", caption: "Office" },
+
+        { url: HH_BASE + "backyard%201.avif", caption: "Backyard" },
+        { url: HH_BASE + "backyard%202.avif", caption: "Backyard" },
+        { url: HH_BASE + "backyard%203.avif", caption: "Backyard" },
+        { url: HH_BASE + "backyard%204.avif", caption: "Backyard" },
+        { url: HH_BASE + "backyard%205.avif", caption: "Backyard" },
+        { url: HH_BASE + "backyard%206.jpeg", caption: "Backyard" },
+        { url: HH_BASE + "backyard%207.avif", caption: "Backyard" },
+        { url: HH_BASE + "backyard%208.avif", caption: "Backyard" },
+        { url: HH_BASE + "backyard%209.avif", caption: "Backyard" },
+        { url: HH_BASE + "backyard%2010.avif", caption: "Backyard" },
+
+        { url: HH_BASE + "patio%201.avif", caption: "Patio" },
+        { url: HH_BASE + "patio%202.avif", caption: "Patio" },
+
+        { url: HH_BASE + "exterior%201.avif", caption: "Exterior" },
+        { url: HH_BASE + "exterior%202.avif", caption: "Exterior" }
       ],
       description: "This historic Vermont farmhouse offers an elegant, comfortable setting for group retreats and gatherings. Filled with vintage and contemporary furnishings, rich textiles, art, and books, the spacious home offers many places to gather, work, reflect, and connect, including a gorgeous chef's kitchen.\n\nSet on 36 private acres in central Vermont, the property offers beautiful mountain views and easy access to local farms, lakes, and ski resorts including Stowe, Sugarbush, and Bolton, all about an hour away.",
       sections: [
@@ -4055,7 +4072,7 @@ Pausa is a musical term, the mark in a score that tells the musicians to hold st
       
       <!-- Brand Column -->
       <div class="footer-brand-col">
-        <img src="https://raw.githubusercontent.com/Kunlun-17/pausaproperties/refs/heads/main/pausa_properties_Footer_logo.png" alt="Pausa Properties logo" class="footer-brand-logo-img">
+        <img src="https://raw.githubusercontent.com/Kunlun-17/pausaproperties/refs/heads/main/assets/image/logo/pausa_properties_Footer_logo.png" alt="Pausa Properties logo" class="footer-brand-logo-img">
         <p class="footer-brand-tagline">Spaces to pause. Places to connect.</p>
         <p class="footer-brand-desc">
           Thoughtfully selected spaces for meaningful retreats, creative work, and connection.
